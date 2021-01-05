@@ -1,8 +1,7 @@
 'use strict'
 
 const switcher = document.querySelector('.btn');
-window.onload=function(){
-    
+
 switcher.addEventListener('click', function() {
     document.body.classList.toggle('dark-theme')
 
@@ -15,4 +14,3 @@ switcher.addEventListener('click', function() {
     }
 
 });
-}
