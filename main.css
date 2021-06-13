@@ -177,27 +177,6 @@ ul {
     padding: 0px;
 }
 
-a {
-    color: rgb(109,198,97) ;
-    font-size: 1em;
-}
-
-a:hover {
-    color: rgb(169, 198, 97) ;
-    font-size: 1em;
-}
-
-.post {
-    float: left;
-}
-.permalink-page .post {
-    width: 500px;
-    max-width: 100%;
-}
-.permalink-page .post.page {
-    width: 100%;
-}
-
 .lightbox {
     /* Default to hidden */
     display: none;
@@ -233,6 +212,27 @@ a:hover {
     background-repeat: no-repeat;
     background-size: contain;
   }
+
+a {
+    color: rgb(109,198,97) ;
+    font-size: 1em;
+}
+
+a:hover {
+    color: rgb(169, 198, 97) ;
+    font-size: 1em;
+}
+
+.post {
+    float: left;
+}
+.permalink-page .post {
+    width: 500px;
+    max-width: 100%;
+}
+.permalink-page .post.page {
+    width: 100%;
+}
 
 .post-content {
     position: relative;
