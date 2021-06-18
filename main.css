@@ -156,26 +156,54 @@ ul {
 }
 
 #bottom {
-    position: relative ;
-    padding-top: 15px ;
-    bottom: 100px ;
-    left: 50% ;
+    font-size: 0.9em ;
+    margin-left: 50%;
+    padding-bottom: 15px ;
+    bottom: 3% ;
+    text-align: right ;
+    margin-right: 2.5%;
   }
 
 .about-photo{
     float: left ;
-    margin-top: 15px ;
-    margin-bottom: 35px ;
-    margin-left: 10% ;
-    padding-right: 20px ;
+    padding-left: 10% ;
 }
 
 .about-description{
-    margin-top: 15% ;
-    margin-left: 10% ;
-    margin-right: 20% ;
+    display: inline-block ;
     font-size: 1.0em;
-    padding: 50px;
+    padding-left: 5%;
+    padding-right: 2.5% ;
+    padding-top: 3% ;
+}
+
+.fcf-body {
+    display: inline-block ;
+    padding-left: 5%;
+}
+
+fcf-body, input[type=text], select, textarea {
+    width: 225%;
+    padding-right: 15% ;
+    border: 1px solid rgb(231, 231, 231);
+    box-sizing: border-box;
+    margin-top: 2px;
+    margin-bottom: 5px;
+    resize: vertical;
+}
+  
+fcf-body, input[type=submit], button {
+    font-family: monospace;
+    background-color:rgb(244, 244, 244);
+    color: black ;
+    padding: 8px 30px;
+    border: none;
+    border-radius: 2px;
+}
+
+fcf-body, button:hover {
+    background-color: rgb(65,65,65) ;
+    color: rgb(109,198,97) ;
 }
 
 .lightbox {
