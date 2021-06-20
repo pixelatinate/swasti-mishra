@@ -172,9 +172,9 @@ ul {
 .about-description{
     display: inline-block ;
     font-size: 1.0em;
-    padding-left: 5%;
-    padding-right: 2.5% ;
     padding-top: 3% ;
+    padding-left: 5%;
+    padding-right: 2.5%
 }
 
 .fcf-body {
@@ -184,7 +184,7 @@ ul {
 
 fcf-body, input[type=text], select, textarea {
     width: 225%;
-    padding-right: 15% ;
+    padding-right: 20px ;
     border: 1px solid rgb(231, 231, 231);
     box-sizing: border-box;
     margin-top: 2px;
@@ -243,12 +243,10 @@ fcf-body, button:hover {
   }
 
 a {
-    color: rgb(109,198,97) ;
     font-size: 1em;
 }
 
 a:hover {
-    color: rgb(169, 198, 97) ;
     font-size: 1em;
 }
 
@@ -288,7 +286,6 @@ a:hover {
 }
 
 .post a, .post a:hover {
-    color: #56BF4B;
     text-decoration: none;
 }
 .post-content a:hover {
@@ -362,9 +359,6 @@ a.link-post-link, a.link-post-link:hover {
 .link-excerpt {
     color: rgba(0,0,0,0.8);
 }
-a.link-post-link .fa {
-    color: #56BF4B;
-}
 
 .video-content, .tmblr-embed {
     position: relative;
@@ -412,6 +406,7 @@ ul.chat {
     display: block;
     max-width: 100%;
 }
+
 figure img {
     height: auto;
 }
@@ -442,9 +437,7 @@ figure img {
     padding: 12px 20px;
     border-top: 1px solid rgba(0,0,0, 0.1);
 }
-.post-meta-line a, .post-meta-line a:hover {
-    color: #56BF4B;
-}
+
 .tag {
     margin-right: 8px;
 }
@@ -456,7 +449,7 @@ figure img {
 }
 .like-button-parent {
     display: inline-block !important;
-    float: right;
+    float: right ;
 }
 .reblog-button {
     margin-right: 0.75em;
@@ -544,7 +537,7 @@ ol.notes {
     box-shadow: none;
 }
 #previous .fa, #next .fa {
-    color: #56BF4B;
+    color: #ffffff;
 }
 
 
@@ -632,6 +625,12 @@ div.npf_row figure.tmblr-full:first-child {
 
 .tmblr-iframe-pushdown .sidebar {
     margin-top: 54px;
+}
+
+.instagram-media {
+    box-shadow: none !important;
+    max-width: 100% !important;
+    width: 100% !important;
 }
 
 
@@ -737,10 +736,6 @@ body.font-monospace .tmblr-lightbox .lightbox-caption {
 body.font-comic-sans .tmblr-lightbox .lightbox-caption {
     font-family: 'Comic Sans MS', 'Comic Sans', Chalkboard, sans-serif !important;
     font-weight: 400;
-}
-
-.tmblr-iframe--app-cta-button {
-    display: none !important;
 }
 
 .photo-link[href=""] {
