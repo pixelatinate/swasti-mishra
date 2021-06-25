@@ -155,6 +155,10 @@ ul {
     padding-top: 25px ;
 }
 
+.twitter-tweet {
+    width: 38vw !important;
+}
+
 #bottom {
     font-size: 0.9em ;
     margin-left: 50%;
@@ -240,6 +244,42 @@ fcf-body, button:hover {
     background-position: center;
     background-repeat: no-repeat;
     background-size: contain;
+  }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit) ;
+    width: 100%;
+    min-height: 100%;
+
+    justify-content: space-evenly;
+    justify-items: center;
+    align-content: space-evenly;
+    align-items: center;
+  }
+  
+  .leftTop {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+    padding: 2.5% ;
+  }
+  
+  .leftBottom {
+    grid-column: 2 / 2;
+    grid-row: 1 / 2;
+    padding: 2.5% ;
+  }
+  
+  .rightTop {
+    grid-column: 1 / 2;
+    grid-row: 2 / 2;
+    padding: 2.5% ;
+  }
+
+  .rightBottom {
+    grid-column: 2 / 2;
+    grid-row: 2 / 2;
+    padding: 2.5% ;
   }
 
 a {
@@ -727,14 +767,6 @@ body.font-sans-serif .tmblr-lightbox .lightbox-caption {
 }
 body.font-serif .tmblr-lightbox .lightbox-caption {
     font-family: Georgia, serif !important;
-    font-weight: 400;
-}
-body.font-monospace .tmblr-lightbox .lightbox-caption {
-    font-family: Consolas, Menlo, Monaco, monospace !important;
-    font-weight: 400;
-}
-body.font-comic-sans .tmblr-lightbox .lightbox-caption {
-    font-family: 'Comic Sans MS', 'Comic Sans', Chalkboard, sans-serif !important;
     font-weight: 400;
 }
 
