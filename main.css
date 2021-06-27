@@ -329,7 +329,8 @@ a:hover {
     text-decoration: none;
 }
 .post-content a:hover {
-    text-decoration: underline;
+    color: #6dc661;
+    
 }
 .post h1, .post h2, .post h3, .post h4, .post h5, .post h6 {
     font-size: 1.28em;
@@ -364,9 +365,10 @@ a:hover {
 }
 
 .post-inner a {
-    text-decoration: underline;
+    color: #6dc661;
 }
 .post-inner a:hover {
+    color: #6dc661;
     background-color: rgba(86,191,75,0.15);
 }
 
