@@ -286,6 +286,18 @@ a {
     font-size: 1em;
 }
 
+.round-frame{
+    width: 12%;
+    float:right ;
+    border-radius: 50%;
+    background-color: #ffffff;
+    margin: 2%;
+    line-height: 140%;
+    overflow: hidden;
+    box-shadow: 1px 1px 2px 1px rgba(0,0,0,0.12);
+}
+
+
 a:hover {
     font-size: 1em;
 }
