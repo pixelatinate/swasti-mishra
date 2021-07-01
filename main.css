@@ -156,7 +156,7 @@ ul {
 }
 
 .twitter-tweet {
-    width: 38vw !important;
+    width: 100% !important;
 }
 
 #bottom {
@@ -209,6 +209,42 @@ fcf-body, button:hover {
     background-color: rgb(65,65,65) ;
     color: rgb(109,198,97) ;
 }
+  
+  .collapsible {
+    background-color: rgb(255, 255, 255);
+    color: #444;
+    cursor: pointer;
+    margin-top: 1%;
+    margin-bottom: 0;
+    margin-left: 2%;
+    width: 96%;
+    text-align: left;
+    font-size: 15px;
+    border: 0.1em solid rgb(231, 231, 231);
+  }
+  
+  .active, .collapsible:hover {
+    background-color: rgb(231, 231, 231);
+  }
+  
+  .content {
+    transition:0.2s ease-out;
+    margin-top: 0;
+    margin-left: 2%;
+    width: 96%;
+    display: none;
+    overflow: hidden;
+    border: 0.1em solid rgb(231, 231, 231);
+  }
+  .collapsible:after {
+    content: '\02795';
+    font-size: 20px;
+    float: right;
+  }
+  
+  .active:after {
+    content: "\2796"; /* Unicode character for "minus" sign (-) */
+  }
 
 .lightbox {
     /* Default to hidden */
@@ -367,7 +403,7 @@ a:hover {
     padding-left: 20px;
 }
 .post blockquote {
-    font-size: 1em;
+    font-size: 0.95em;
     margin: 9px 0;
     padding: 0 9px;
     font-style: italic;
