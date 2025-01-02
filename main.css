@@ -4,10 +4,19 @@
     box-sizing: border-box;
 }
 
+:root {
+    --red:    #c4190d;
+    --orange: #f48c0a;
+    --yellow: #eddb6b;
+    --green1: #bac27b;
+    --green2: #a1a040;
+    --blue:   #499ab4;
+    --purple: #b68082;
+}
+
 body {
     color: #000000;
     background-color: #ffffff;
-    
     font-family: Roboto;
     font-size: 13px;
     margin: 0;
@@ -24,10 +33,6 @@ body.font-monospace {
 .wrapper {
     width: 100%;
     overflow: hidden;
-}
-
-.main {
-    padding: 30px 20px;
 }
 
 .posts-container {
@@ -55,41 +60,45 @@ ul {
     background-color: #ffffff;
     color: #000000;
     text-align: center;
-    width: 260px;
+    width: 20%;
+    height: 100%;
     position: fixed;
     top: 0;
     left: 0;
-    height: 100%;
-}
-.sidebar-photo {
-    margin-top: 20px ;
-    border-radius: 0px;
-    border: 0px solid #ffffff;
+} 
+
+.sidebar img { 
+    margin-top: 10%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    display: block;
 }
 
-.avatar-container {
-    margin-bottom: 0;
-    padding: 0px 0;
-    background-color: rgba(255,255,255,0.07);
+.sidebar h1 {
+    font-family: 'Brutal Type', sans-serif;
+    font-weight: bold;
 }
-.blog-description {
+
+.sidebar h2 {
     font-size: 1em;
-    margin-bottom: 20px ;
+    font-style: italic;
+    margin-bottom: 40px ;
     padding: 0px;
+
+    background: linear-gradient(to right,#c4190d,#f48c0a,#a1a040,#499ab4,#b68082);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
 }
-.blog-description a, .blog-description a:hover {
-    color: #ffffff;
-    text-decoration: underline;
-}
-.sidebar-links {
+
+.sidebar ul{
     list-style-type: none;
 }
-.sidebar-link {
-    color: #000000;
-    font-size: 1em;
-}
-.sidebar-link li {
+
+.sidebar a li{
     background-color: rgb(244, 244, 244);
+    color: black;
     margin-bottom: 5px;
     margin-left: 20px ;
     margin-right: 20px ;
@@ -97,42 +106,40 @@ ul {
     border-radius: 2px ;
 
 }
-.sidebar-link:hover li {
+.sidebar a li:hover{
     background-color: rgb(65,65,65) ;
-    color: rgb(109,198,97) ;
-}
-.blog-title {
-    font-family: 'Brutal Type', sans-serif;
-    font-weight: bold;
-}
-.social-buttons {
-    position: fixed;
-    bottom: 18px;
-    width: 260px;
-    margin: 0;
-    padding: 12px;
-    display: none;
+    color: white;
 }
 
-.social-buttons { display: block; }
+.sidebar table{
+    margin: auto;
+    width: 75%;
+}
 
-.social-buttons a {
+.sidebar table a {
     color: rgb(134, 134, 134);
-    font-size: 1.5em;
-    margin: 0 7px;
+    font-size: 2em;
+    margin: 0 10px;
     border-radius: 3px;
 }
-.social-buttons a:hover {
-    font-size: 1.5em;
+
+.sidebar table a:hover {
     background-color: rgb(65,65,65) ;
     color: rgb(109,198,97) ;
+    font-size: 2em;
+    margin: 0 10px;
+    border-radius: 3px;
 }
-.page-title {
+
+.main {
+    margin-left: 20%;
+}
+
+.main h1 {
     font-family: 'Brutal Type', sans-serif;
     color:#787878 ;
-    padding-left: 25px ;
-    padding-top: 25px ;
 }
+
 
 .twitter-tweet {
     width: 100% !important;
