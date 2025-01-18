@@ -56,7 +56,7 @@ ul {
 }
 
 .sidebar {
-    box-shadow: 5px 0px 5px rgb(197, 197, 197);
+    box-shadow: 5px 0px 25px rgb(44, 44, 44);
     background-color: #ffffff;
     color: #000000;
     text-align: center;
@@ -65,6 +65,7 @@ ul {
     position: fixed;
     top: 0;
     left: 0;
+    z-index: 1;
 } 
 
 .sidebar img { 
@@ -133,6 +134,7 @@ ul {
 
 .main {
     margin-left: 20%;
+    
 }
 
 .main h1 {
@@ -140,6 +142,33 @@ ul {
     color:#787878 ;
 }
 
+.main img {
+    width: 100%;
+}
+
+.main .slides {
+    position: relative;
+}
+
+.main .slides .description{
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+    color: white;
+}
+
+.main .slides .description h1 {
+    font-size: 2.5em;
+    color: white;
+}
+
+.main .slides .description p {
+    font-size: 1.5em;
+}
+
+.main .slides .description:hover {
+    font-style:oblique;   
+}
 
 .twitter-tweet {
     width: 100% !important;
@@ -154,17 +183,34 @@ ul {
     margin-right: 2.5%;
   }
 
-.about-photo{
-    float: left ;
-    padding-left: 10% ;
+.about {
+    display: inline-block;
+    padding-top: 10%;
+    padding-left: 5%;
 }
 
-.about-description{
-    display: inline-block ;
-    font-size: 1.0em;
-    padding-top: 3% ;
-    padding-left: 5%;
-    padding-right: 2.5%
+.about img{
+    border-top-left-radius: 500px;
+    border-bottom-left-radius: 500px;
+    width: 50%;
+    float: left;
+}
+
+.about .about-description{
+    float: left;
+    width: 40%;
+    padding-top: 10% ;
+    padding-left: 2.5%;
+    font-size: 1.15em;
+    text-align: justify;
+}
+
+.about .about-description a{
+    color: #499ab4;
+}
+
+.about .about-description a:hover{
+    color: #145a71;
 }
 
 .fcf-body {
