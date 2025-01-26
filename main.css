@@ -134,7 +134,6 @@ ul {
 
 .main {
     margin-left: 20%;
-    
 }
 
 .main h1 {
@@ -144,6 +143,19 @@ ul {
 
 .main img {
     width: 100%;
+}
+
+.main p {
+    margin-left: 5%;
+    margin-top: 5%;
+    font-size: 1.1em;
+}
+
+.main iframe {
+    margin-left: 5%;
+    width: 90%;
+    height: 775px;
+    border: none ;
 }
 
 .main .slides {
