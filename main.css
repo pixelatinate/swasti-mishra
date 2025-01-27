@@ -39,9 +39,22 @@ body.font-monospace {
     margin-left: 260px;
 }
 
-a, a:hover {
+.main a {
+    box-shadow: inset 0 0 0 0 #54b3d6;
+    color: #54b3d6;
+    margin: 0 -.15rem;
+    padding: 0 .15rem;
+    transition: color .3s ease-in-out, box-shadow .3s ease-in-out;
     text-decoration: none;
-    color: rgb(38, 115, 27) ;
+}
+
+.main a:hover {
+    box-shadow: inset 500px 0 0 0 #54b3d6;
+    color: white;
+}
+
+ul {
+    padding-left: 5%;   
 }
 
 .blog-title {
@@ -50,13 +63,8 @@ a, a:hover {
     font-size: 1.6em;
 }
 
-ul {
-    list-style-type: none;
-    padding-left: 0;
-}
-
 .sidebar {
-    box-shadow: 5px 0px 25px rgb(44, 44, 44);
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
     background-color: #ffffff;
     color: #000000;
     text-align: center;
@@ -95,6 +103,10 @@ ul {
 
 .sidebar ul{
     list-style-type: none;
+}
+
+.sidebar a {
+    text-decoration: none;
 }
 
 .sidebar a li{
@@ -136,26 +148,36 @@ ul {
     margin-left: 20%;
 }
 
-.main h1 {
-    font-family: 'Brutal Type', sans-serif;
-    color:#787878 ;
+.main img {
+    width: 90%;
+    margin-left: 5%;
+    margin-top: 2.5%;
+    border-radius: 5px;
+    border-style: none;
+    border-color: #e3e3e3;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.main img {
-    width: 100%;
+.main h1 {
+    font-family: 'Brutal Type', sans-serif;
+    margin-left: 5%;
+    margin-top: 5%;
+    color:#2a2a2a ;
 }
 
 .main p {
     margin-left: 5%;
-    margin-top: 5%;
     font-size: 1.1em;
 }
 
 .main iframe {
     margin-left: 5%;
     width: 90%;
-    height: 775px;
-    border: none ;
+    height: 750px;
+    border-radius: 5px;
+    border-style: none;
+    border-color: #e3e3e3;
+    box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .main .slides {
@@ -164,8 +186,8 @@ ul {
 
 .main .slides .description{
     position: absolute;
-    bottom: 10%;
-    left: 5%;
+    bottom: 5%;
+    left: 10%;
     color: white;
 }
 
@@ -186,13 +208,12 @@ ul {
     width: 100% !important;
 }
 
-#bottom {
-    font-size: 0.9em ;
-    margin-left: 50%;
+.bottom {
+    font-size: 1em ;
+    margin-top: 1%;
+    margin-right: 4%;
     padding-bottom: 15px ;
-    bottom: 3% ;
     text-align: right ;
-    margin-right: 2.5%;
   }
 
 .about {
