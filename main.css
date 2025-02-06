@@ -200,7 +200,7 @@ body {
     margin-right: 4%;
     padding-bottom: 15px ;
     text-align: right ;
-  }
+}
 
 .about {
     display: inline-block;
@@ -219,3 +219,91 @@ body {
     font-size: 1.15em;
     text-align: justify;
 }
+
+/* Small Phones */
+@media only screen and (max-width: 576px) {
+    .sidebar {
+        box-shadow: 0 0 15px rgb(0 0 0 / 0.2);
+        width: 100%;
+        position: static;
+        padding-top: 5%;
+    } 
+    
+    .sidebar img { 
+        width: 25%;
+        margin-top: 0%;
+    }
+    
+    .sidebar h2 {
+        font-size: 1.4em;
+        padding-bottom: 2.5%;
+    }
+    
+    .sidebar a {
+        font-size: 1.2em;
+    }
+    
+    .sidebar ul{
+        margin-bottom: 5%;
+    }
+
+    .sidebar table{
+        width: 50%;
+        padding-bottom: 5%;
+    }
+    
+    .sidebar table a {
+        color: rgb(134, 134, 134);
+        font-size: 3em;
+    }
+    
+    .sidebar table a:hover {
+        font-size: 3em;
+    }
+
+    .main {
+        margin-left: 0%;
+        margin-right: 5%;
+        text-wrap: pretty;
+    }
+
+    .main iframe {
+        width: 100%;
+        height: 750px;
+    }
+
+    .bottom {
+        text-align: center ;
+    }
+
+    .about {
+        display: block
+    }
+    
+    .about img{
+        width: 95%;
+        margin-left: 5%;
+        float: none;
+    }
+    
+    .about .about-description{
+        float: none;
+        width: 100%;
+        padding-left: 1.5%;
+        padding-top: 5%;
+        font-size: 1.15em;
+        text-align: justify;
+    }
+}
+
+/* Large Phones */
+@media only screen and (min-width: 576px) {...}
+
+/* Tablets */
+@media only screen and (min-width: 768px) {...}
+
+/* Laptops */
+@media only screen and (min-width: 992px) {...}
+
+/* Desktops */
+@media only screen and (min-width: 1200px) {...}
