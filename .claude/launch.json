@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "swasti-site",
+      "runtimeExecutable": "bash",
+      "runtimeArgs": ["-c", "export PATH=\"$(brew --prefix node)/bin:$PATH\"; exec npm run dev"],
+      "port": 3000
+    }
+  ]
+}

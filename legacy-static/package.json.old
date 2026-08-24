@@ -1,0 +1,19 @@
+{
+  "name": "swasti-mishra_site",
+  "version": "1.0.0",
+  "description": "Swasti's portfolio website",
+  "main": "collapsible-button.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/pixelatinate/swasti-mishra.git"
+  },
+  "author": "swasti mishra",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/pixelatinate/swasti-mishra/issues"
+  },
+  "homepage": "https://github.com/pixelatinate/swasti-mishra#readme"
+}

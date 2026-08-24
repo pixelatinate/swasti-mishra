@@ -1,0 +1,67 @@
+.form {
+  margin-top: 5%;
+  width: 100%;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1em;
+}
+
+.field label {
+  font-size: 0.95em;
+  margin-bottom: 0.3em;
+}
+
+.field input,
+.field textarea {
+  font-family: inherit;
+  font-size: 1em;
+  padding: 0.6em 0.7em;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 5px;
+  resize: vertical;
+}
+
+.field input:focus,
+.field textarea:focus {
+  outline: 2px solid #54b3d6;
+  border-color: #54b3d6;
+}
+
+.submit {
+  font-family: inherit;
+  font-size: 1em;
+  color: white;
+  background-color: #54b3d6;
+  border: none;
+  border-radius: 5px;
+  padding: 0.7em 1.6em;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.submit:hover:not(:disabled) {
+  background-color: rgb(65, 65, 65);
+}
+
+.submit:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.status {
+  margin-top: 1em;
+  font-style: italic;
+}
+
+.success {
+  composes: status;
+  color: var(--green2, #a1a040);
+}
+
+.error {
+  composes: status;
+  color: var(--red, #c4190d);
+}

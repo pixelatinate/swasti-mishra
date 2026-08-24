@@ -1,19 +1,33 @@
 {
-  "name": "swasti-mishra_site",
-  "version": "1.0.0",
-  "description": "Swasti's portfolio website",
-  "main": "collapsible-button.js",
+  "name": "swasti-mishra-site",
+  "version": "0.1.0",
+  "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint",
+    "seed:writing": "dotenv -e .env.local -- tsx scripts/seed-writing.ts"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/pixelatinate/swasti-mishra.git"
+  "dependencies": {
+    "@sanity/client": "^8.2.0",
+    "@sanity/image-url": "^2.1.1",
+    "next": "16.3.2",
+    "next-sanity": "^13.3.3",
+    "react": "19.2.8",
+    "react-dom": "19.2.8",
+    "react-icons": "^5.7.0",
+    "resend": "^6.22.0",
+    "sanity": "^6.10.1"
   },
-  "author": "swasti mishra",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/pixelatinate/swasti-mishra/issues"
-  },
-  "homepage": "https://github.com/pixelatinate/swasti-mishra#readme"
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "dotenv-cli": "^11.0.0",
+    "eslint": "^9",
+    "eslint-config-next": "16.3.2",
+    "tsx": "^4.23.12",
+    "typescript": "^5"
+  }
 }
