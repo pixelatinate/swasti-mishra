@@ -33,12 +33,12 @@ export default function AboutPage() {
             MATLAB Performance, and Foundation Architecture. My pages averaged about 1.85 million views a year.
             <br />
             <br />
-            I'm currently working as a Technical Writer / Content Engineer at Databricks, where I document Lakeflow Connect, among other areas. 
+            I&apos;m currently working as a Technical Writer / Content Engineer at Databricks, where I document Lakeflow Connect, among other areas.
             Lakeflow connect encompasses connectors like Google Analytics, Anthropic, TikTok Ads, Kafka, and RabbitMQ. I also helped
             lead a rework of how the release notes got published.
             <br />
             <br />
-            I&apos;ve since moved to Seattle and am looking for what&apos;s next. Ideally, I'd love to be involved with projects that
+            I&apos;ve since moved to Seattle and am looking for what&apos;s next. Ideally, I&apos;d love to be involved with projects that
             allow me to build stuff and write about it. If you&apos;d like to get in touch, please shoot me a
             message on <a href="https://www.linkedin.com/in/swasti-mishra/">LinkedIn</a>, or use the form below.
           </p>
