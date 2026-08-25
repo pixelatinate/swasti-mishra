@@ -29,27 +29,17 @@ export default function Sidebar() {
           </Link>
         ))}
       </ul>
-      <table>
-        <tbody>
-          <tr>
-            <th>
-              <a href="https://www.linkedin.com/in/swasti-mishra/" target="_blank" rel="noopener noreferrer">
-                <FaLinkedin />
-              </a>
-            </th>
-            <th>
-              <a href="https://github.com/pixelatinate" target="_blank" rel="noopener noreferrer">
-                <FaGithub />
-              </a>
-            </th>
-            <th>
-              <a href="https://www.instagram.com/pixelatinate/?hl=en" target="_blank" rel="noopener noreferrer">
-                <FaInstagram />
-              </a>
-            </th>
-          </tr>
-        </tbody>
-      </table>
+      <div className="social-links">
+        <a href="https://www.linkedin.com/in/swasti-mishra/" target="_blank" rel="noopener noreferrer">
+          <FaLinkedin />
+        </a>
+        <a href="https://github.com/pixelatinate" target="_blank" rel="noopener noreferrer">
+          <FaGithub />
+        </a>
+        <a href="https://www.instagram.com/pixelatinate/?hl=en" target="_blank" rel="noopener noreferrer">
+          <FaInstagram />
+        </a>
+      </div>
     </div>
   );
 }

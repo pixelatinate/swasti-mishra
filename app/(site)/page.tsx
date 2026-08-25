@@ -6,7 +6,16 @@ export default function Home() {
     <>
       <Link href="/coding#disco_fish">
         <div className="slides">
-          <Image src="/images/graphics-proj.gif" alt="" width={1992} height={1190} unoptimized />
+          <video
+            src="/images/graphics-proj.mp4"
+            poster="/images/graphics-proj-poster.jpg"
+            width={1992}
+            height={1190}
+            autoPlay
+            loop
+            muted
+            playsInline
+          />
           <div className="description">
             <h1>Graphics Projects 2024</h1>
             <p>Check out this scene I made in pure JavaScript!</p>

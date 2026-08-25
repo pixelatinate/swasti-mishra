@@ -101,25 +101,31 @@ a {
   color: white;
 }
 
-.sidebar table {
-  margin: auto;
-  width: 75%;
-}
-
-.sidebar table a {
-  display: inline-flex;
+.sidebar .social-links {
+  display: flex;
   align-items: center;
   justify-content: center;
-  width: 1.8em;
-  height: 1.8em;
+  gap: 8%;
+  width: 75%;
+  margin: 0 auto;
+}
+
+.sidebar .social-links a {
+  display: flex;
+  flex: 0 1 auto;
+  align-items: center;
+  justify-content: center;
+  width: 22%;
+  aspect-ratio: 1;
+  max-width: 48px;
+  min-width: 0;
   color: rgb(134, 134, 134);
-  font-size: 2em;
-  margin: 0 10px;
+  font-size: 1.6em;
   border-radius: 3px;
   transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
 }
 
-.sidebar table a:hover {
+.sidebar .social-links a:hover {
   background-color: rgb(65, 65, 65);
   color: #a1a040;
 }
@@ -140,7 +146,8 @@ a {
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
-.main .slides img {
+.main .slides img,
+.main .slides video {
   display: block;
   width: 100%;
   height: auto;
@@ -149,7 +156,8 @@ a {
   transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
 }
 
-.main .slides:hover img {
+.main .slides:hover img,
+.main .slides:hover video {
   transform: scale(1.06);
   filter: brightness(0.7);
 }
@@ -247,14 +255,9 @@ a {
   font-size: 1.1em;
 }
 
-.main iframe {
+.main .iframe-wrapper {
   margin-left: 5%;
   width: 90%;
-  height: 750px;
-  border-radius: 5px;
-  border-style: none;
-  border-color: #e3e3e3;
-  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
 }
 
 .bottom {
@@ -316,18 +319,14 @@ a {
     margin-bottom: 5%;
   }
 
-  .sidebar table {
+  .sidebar .social-links {
     width: 50%;
-    padding-bottom: 5%;
+    margin-bottom: 5%;
   }
 
-  .sidebar table a {
-    color: rgb(134, 134, 134);
-    font-size: 3em;
-  }
-
-  .sidebar table a:hover {
-    font-size: 3em;
+  .sidebar .social-links a {
+    max-width: 64px;
+    font-size: 2.4em;
   }
 
   .main .slides .description h1 {
@@ -341,9 +340,10 @@ a {
     text-wrap: pretty;
   }
 
-  .main iframe {
-    width: 100%;
-    height: 750px;
+  .main .slides,
+  .main .iframe-wrapper {
+    width: 95%;
+    margin-left: 5%;
   }
 
   .bottom {
@@ -362,8 +362,9 @@ a {
 
   .about .about-description {
     float: none;
-    width: 100%;
-    padding-left: 1.5%;
+    width: 95%;
+    margin-left: 5%;
+    padding-left: 0;
     padding-top: 5%;
     font-size: 1.15em;
     text-align: justify;
