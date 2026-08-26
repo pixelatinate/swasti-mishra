@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 
 const DISCO_FISH_SRC = "/disco-fish/index.html";
 const NATURAL_WIDTH = 1023;
@@ -9,9 +9,9 @@ const NATURAL_HEIGHT = 750;
 export default function DiscoFishFrame() {
   const containerRef = useRef<HTMLDivElement>(null);
   const frameRef = useRef<HTMLIFrameElement>(null);
-  const [scale, setScale] = useState(1);
+  const [scale, setScale] = useState(0);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const frame = frameRef.current;
     if (frame) {
       frame.src = DISCO_FISH_SRC;
@@ -23,25 +23,37 @@ export default function DiscoFishFrame() {
     };
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const container = containerRef.current;
     if (!container) return;
 
-    const observer = new ResizeObserver((entries) => {
-      const width = entries[0]?.contentRect.width;
-      if (width) {
-        setScale(width / NATURAL_WIDTH);
+    function measure() {
+      if (container) {
+        setScale(container.getBoundingClientRect().width / NATURAL_WIDTH);
       }
-    });
+    }
+
+    // Measure synchronously on mount rather than waiting on ResizeObserver's
+    // first (async) callback, so there's no flash at the wrong scale.
+    measure();
+
+    const observer = new ResizeObserver(measure);
     observer.observe(container);
-    return () => observer.disconnect();
+    // Belt-and-suspenders: some browsers are inconsistent about firing
+    // ResizeObserver promptly on every layout change, so also recompute on
+    // window resize directly.
+    window.addEventListener("resize", measure);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", measure);
+    };
   }, []);
 
   return (
     <div
       ref={containerRef}
-      className="iframe-wrapper"
       style={{
+        width: "100%",
         height: NATURAL_HEIGHT * scale,
         overflow: "hidden",
         position: "relative",

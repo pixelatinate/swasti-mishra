@@ -54,18 +54,23 @@ a {
 }
 
 .sidebar h1 {
-  font-family: "Brutal Type", sans-serif;
-  font-weight: bold;
-}
-
-.sidebar h2 {
-  font-size: 1em;
-  font-style: italic;
-  padding-bottom: 10%;
+  display: inline-block;
+  font-family: var(--font-sour-gummy), sans-serif;
+  font-weight: 600;
+  font-size: 2.4em;
   background: linear-gradient(to right, #c4190d, #f48c0a, #a1a040, #499ab4, #b68082);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
+}
+
+.sidebar h2 {
+  font-family: var(--font-sour-gummy), sans-serif;
+  font-weight: 400;
+  font-size: 1em;
+  font-style: italic;
+  padding-bottom: 10%;
+  color: rgb(110, 110, 110);
 }
 
 .sidebar ul {
@@ -83,6 +88,8 @@ a {
 }
 
 .sidebar a li {
+  font-family: var(--font-sour-gummy), sans-serif;
+  font-weight: 400;
   background-color: rgb(244, 244, 244);
   color: black;
   margin-right: 5%;
@@ -179,7 +186,8 @@ a {
 .main .slides .description {
   position: absolute;
   bottom: 5%;
-  left: 10%;
+  left: 5%;
+  right: 5%;
   z-index: 2;
   color: white;
   transition: transform 0.4s ease-in-out;
@@ -190,29 +198,26 @@ a {
 }
 
 .main .slides .description h1 {
-  position: relative;
   display: inline-block;
-  font-size: 2.5em;
-  color: white;
-}
-
-.main .slides .description h1::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  bottom: -0.15em;
-  height: 3px;
-  width: 0;
+  margin: 0 0 0.15em;
+  font-size: 2.4em;
+  font-family: var(--font-sour-gummy), sans-serif;
+  font-weight: 600;
   background: linear-gradient(to right, #c4190d, #f48c0a, #a1a040, #499ab4, #b68082);
-  transition: width 0.4s ease-in-out;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: white;
+  color: white;
+  transition: -webkit-text-fill-color 0.4s ease-in-out;
 }
 
-.main .slides:hover .description h1::after {
-  width: 100%;
+.main .slides:hover .description h1 {
+  -webkit-text-fill-color: transparent;
 }
 
 .main .slides .description p {
-  font-size: 1.5em;
+  margin: 0;
+  font-size: 1.2em;
 }
 
 :where(.main a) {
@@ -244,10 +249,17 @@ a {
 }
 
 .main h1 {
-  font-family: "Brutal Type", sans-serif;
+  display: inline-block;
+  font-family: var(--font-sour-gummy), sans-serif;
+  font-weight: 600;
+  font-size: 3.2em;
   margin-left: 5%;
   margin-top: 5%;
   color: #6a6a6a;
+  background: linear-gradient(to right, #c4190d, #f48c0a, #a1a040, #499ab4, #b68082);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 :where(.main p) {
@@ -255,9 +267,13 @@ a {
   font-size: 1.1em;
 }
 
-.main .iframe-wrapper {
-  margin-left: 5%;
-  width: 90%;
+/* Paragraphs inside a PortfolioSection already sit in a correctly-inset
+   container, so they shouldn't also inherit the top-level paragraph
+   indent/right-margin meant for direct children of .main. */
+.main section p {
+  margin-left: 0;
+  margin-right: 0;
+  text-align: justify;
 }
 
 .bottom {
@@ -340,8 +356,7 @@ a {
     text-wrap: pretty;
   }
 
-  .main .slides,
-  .main .iframe-wrapper {
+  .main .slides {
     width: 95%;
     margin-left: 5%;
   }
@@ -373,7 +388,7 @@ a {
 
 @media only screen and (min-width: 992px) {
   .sidebar h1 {
-    font-size: 1.2em;
+    font-size: 2em;
   }
 
   .sidebar h2 {

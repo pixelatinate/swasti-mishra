@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
-import { Roboto } from "next/font/google";
+import { Roboto, Sour_Gummy } from "next/font/google";
 import Script from "next/script";
+import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
 const roboto = Roboto({
@@ -8,6 +9,13 @@ const roboto = Roboto({
   style: ["normal", "italic"],
   subsets: ["latin"],
   display: "swap",
+});
+
+const sourGummy = Sour_Gummy({
+  weight: "variable",
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-sour-gummy",
 });
 
 export const metadata: Metadata = {
@@ -36,7 +44,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={roboto.className}>
+    <html lang="en" className={`${roboto.className} ${sourGummy.variable}`}>
       <body>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-0046WG76SX" />
         <Script id="ga-init">
@@ -46,6 +54,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             gtag('config', 'G-0046WG76SX');`}
         </Script>
         {children}
+        <Analytics />
       </body>
     </html>
   );

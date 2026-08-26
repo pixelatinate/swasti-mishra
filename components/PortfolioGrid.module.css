@@ -5,6 +5,16 @@
   gap: 1em;
 }
 
+.gridSlide {
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-auto-rows: auto;
+}
+
+.gridSlide .tile {
+  aspect-ratio: 16 / 9;
+  background: rgb(30, 30, 30);
+}
+
 .tile {
   position: relative;
   overflow: hidden;
@@ -28,6 +38,10 @@
   height: 100%;
   object-fit: cover;
   display: block;
+}
+
+.tileImageContain {
+  object-fit: contain;
 }
 
 .tileVideo {

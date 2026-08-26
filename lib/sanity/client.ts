@@ -20,12 +20,13 @@ export type WritingLink = {
   category: "Wrote" | "Contributed";
   release?: string;
   archiveUrl?: string;
+  driveUrl?: string;
   order?: number;
 };
 
 export async function getWritingLinks(): Promise<WritingLink[]> {
   if (!projectId) return [];
   return getClient().fetch(
-    `*[_type == "writingLink"] | order(category asc, order asc){ _id, title, url, category, release, archiveUrl, order }`
+    `*[_type == "writingLink"] | order(category asc, order asc){ _id, title, url, category, release, archiveUrl, driveUrl, order }`
   );
 }

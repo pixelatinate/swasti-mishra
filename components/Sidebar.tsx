@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
 
 const NAV_LINKS = [
-  { href: "/coding", label: "Coding" },
+  { href: "/projects", label: "Projects" },
   { href: "/writing", label: "Writing" },
   { href: "/illustration", label: "Illustration & Design" },
   { href: "/about", label: "About & Contact" },
@@ -21,7 +21,7 @@ export default function Sidebar() {
         <Image src="/images/favicon.png" alt="" width={111} height={133} />
       </Link>
       <h1>Swasti Mishra</h1>
-      <h2>Currently in Seattle, WA. Open to anywhere.</h2>
+      <h2>Currently in Seattle, WA.<br/>Open to anywhere.</h2>
       <ul className="sidebar-links">
         {NAV_LINKS.map(({ href, label }) => (
           <Link key={href} href={href} className={pathname === href ? "active" : undefined}>

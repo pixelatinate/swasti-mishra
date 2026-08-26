@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { getWritingLinks } from "@/lib/sanity/client";
+import styles from "./writing.module.css";
 
 export const metadata: Metadata = {
   title: "Swasti Mishra | Writing",
@@ -7,54 +9,60 @@ export const metadata: Metadata = {
 
 export const revalidate = 60;
 
+// Set once a banner image is ready: { src: "/images/writing-hero.jpg", width: 2000, height: 500 }
+const HERO_IMAGE: { src: string; width: number; height: number } | null = null;
+
 export default async function WritingPage() {
   const links = await getWritingLinks();
-  const wrote = links.filter((l) => l.category === "Wrote");
-  const contributed = links.filter((l) => l.category === "Contributed");
-
-  if (links.length === 0) {
-    return (
-      <>
-        <h1>Writing</h1>
-        <p>
-          Nothing here yet — the writing list is pulled live from Sanity and hasn&apos;t been configured/seeded in
-          this environment.
-        </p>
-      </>
-    );
-  }
 
   return (
     <>
       <h1>Writing</h1>
-      {wrote.length > 0 && (
-        <>
-          <p>Here are some pages I wrote for the MATLAB documentation:</p>
-          <ul>
-            {wrote.map((link) => (
-              <li key={link._id}>
-                <a href={link.url}>{link.title}</a>
-                {link.release && <> ({link.release})</>}
-              </li>
-            ))}
-          </ul>
-        </>
+      <p>
+        A collection of pages I&apos;ve written or contributed to, plus older writing samples I&apos;m slowly
+        cataloging — with a live link, an archived (Wayback Machine) copy in case the original ever disappears, and
+        sometimes a downloadable PDF backup.
+      </p>
+
+      {HERO_IMAGE && (
+        <div className={styles.hero}>
+          <Image src={HERO_IMAGE.src} alt="" width={HERO_IMAGE.width} height={HERO_IMAGE.height} priority />
+        </div>
       )}
-      {contributed.length > 0 && (
-        <>
-          <p>
-            <br />
-            Here are some pages I contributed to in the MATLAB documentation:
-          </p>
-          <ul>
-            {contributed.map((link) => (
-              <li key={link._id}>
-                <a href={link.url}>{link.title}</a>
-                {link.release && <> ({link.release})</>}
-              </li>
-            ))}
-          </ul>
-        </>
+
+      {links.length === 0 ? (
+        <p className={styles.empty}>
+          Nothing here yet — the writing list is pulled live from Sanity and hasn&apos;t been configured/seeded in
+          this environment.
+        </p>
+      ) : (
+        <div className={styles.tableWrapper}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Live</th>
+                <th>Archived</th>
+                <th>PDF</th>
+              </tr>
+            </thead>
+            <tbody>
+              {links.map((link) => (
+                <tr key={link._id}>
+                  <td>
+                    {link.title}
+                    {link.release && <span className={styles.release}> ({link.release})</span>}
+                  </td>
+                  <td>{link.category}</td>
+                  <td>{link.url ? <a href={link.url}>Live</a> : "—"}</td>
+                  <td>{link.archiveUrl ? <a href={link.archiveUrl}>Wayback</a> : "—"}</td>
+                  <td>{link.driveUrl ? <a href={link.driveUrl}>PDF</a> : "—"}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       )}
     </>
   );

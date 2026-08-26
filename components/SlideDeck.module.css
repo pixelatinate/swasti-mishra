@@ -1,0 +1,74 @@
+.deck {
+  width: 100%;
+}
+
+.viewer {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  background: rgb(30, 30, 30);
+  border-radius: 5px;
+  box-shadow: 0 3px 10px rgb(0 0 0 / 0.2);
+  overflow: hidden;
+}
+
+.slideImage {
+  width: 100%;
+  height: auto;
+  margin: 0;
+  display: block;
+}
+
+.navButton {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 15%;
+  min-width: 44px;
+  border: none;
+  background: linear-gradient(to right, rgb(0 0 0 / 0.35), rgb(0 0 0 / 0));
+  color: white;
+  font-size: 2.5em;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.prev {
+  left: 0;
+}
+
+.next {
+  right: 0;
+  background: linear-gradient(to left, rgb(0 0 0 / 0.35), rgb(0 0 0 / 0));
+}
+
+.viewer:hover .navButton {
+  opacity: 1;
+}
+
+.counter {
+  text-align: center;
+  font-size: 0.85em;
+  color: rgb(140, 140, 140);
+  margin-top: 0.6em;
+}
+
+.notes {
+  margin: 1em 0 0;
+  font-style: italic;
+  color: rgb(70, 70, 70);
+  text-align: justify;
+  animation: fadeIn 0.4s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -24,10 +24,11 @@ cp .env.local.example .env.local
 
 1. Create a free account at [resend.com](https://resend.com).
 2. Create an API key, put it in `.env.local` as `RESEND_API_KEY`.
-3. Until `swasti-mishra.com` is verified as a sending domain in Resend, leave `RESEND_FROM_EMAIL` as
-   `onboarding@resend.dev` — email will only deliver to the Resend account's own inbox until then.
-4. Once the domain is verified, set `RESEND_FROM_EMAIL` to something like
-   `contact@swasti-mishra.com`.
+3. `swasti-mishra.com` is already verified as a sending domain in Resend (DNS records live at
+   DreamHost), so `RESEND_FROM_EMAIL` is set to `hello@swasti-mishra.com`. If you ever need to
+   re-verify from scratch, Resend's domain page will give you the DNS records to add.
+4. Remember to set both `RESEND_API_KEY` and `RESEND_FROM_EMAIL` in the Vercel project's
+   environment variables too — `.env.local` only affects local dev.
 
 ## Development
 

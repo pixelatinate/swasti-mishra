@@ -9,7 +9,13 @@ export type PortfolioTile =
   | { type: "video"; src: string; caption?: string; href?: string }
   | { type: "link"; href: string; label: string };
 
-export default function PortfolioGrid({ items }: { items: PortfolioTile[] }) {
+export default function PortfolioGrid({
+  items,
+  variant = "photo",
+}: {
+  items: PortfolioTile[];
+  variant?: "photo" | "slide";
+}) {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   useEffect(() => {
@@ -26,9 +32,11 @@ export default function PortfolioGrid({ items }: { items: PortfolioTile[] }) {
       ? (items[openIndex] as Extract<PortfolioTile, { type: "image" }>)
       : null;
 
+  const tileImageClassName = variant === "slide" ? `${styles.tileImage} ${styles.tileImageContain}` : styles.tileImage;
+
   return (
     <>
-      <div className={styles.grid}>
+      <div className={variant === "slide" ? `${styles.grid} ${styles.gridSlide}` : styles.grid}>
         {items.map((item, i) => {
           if (item.type === "image" && item.href) {
             return (
@@ -40,7 +48,7 @@ export default function PortfolioGrid({ items }: { items: PortfolioTile[] }) {
                 className={styles.tile}
                 aria-label={`View ${item.alt} on Instagram`}
               >
-                <Image src={item.src} alt={item.alt} width={item.width} height={item.height} className={styles.tileImage} />
+                <Image src={item.src} alt={item.alt} width={item.width} height={item.height} className={tileImageClassName} />
                 {item.caption && <span className={styles.caption}>{item.caption}</span>}
               </a>
             );
@@ -54,7 +62,7 @@ export default function PortfolioGrid({ items }: { items: PortfolioTile[] }) {
                 onClick={() => setOpenIndex(i)}
                 aria-label={`View ${item.alt}`}
               >
-                <Image src={item.src} alt={item.alt} width={item.width} height={item.height} className={styles.tileImage} />
+                <Image src={item.src} alt={item.alt} width={item.width} height={item.height} className={tileImageClassName} />
                 {item.caption && <span className={styles.caption}>{item.caption}</span>}
               </button>
             );

@@ -43,6 +43,12 @@ export const writingLink = defineType({
       type: "url",
     }),
     defineField({
+      name: "driveUrl",
+      title: "Drive URL",
+      description: "Optional link to a downloadable PDF copy of this piece, backed up on Google Drive.",
+      type: "url",
+    }),
+    defineField({
       name: "order",
       title: "Order",
       description: "Lower numbers sort first within a category.",

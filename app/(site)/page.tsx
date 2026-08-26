@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function Home() {
   return (
     <>
-      <Link href="/coding#disco_fish">
+      <Link href="/projects#disco_fish">
         <div className="slides">
           <video
             src="/images/graphics-proj.mp4"
@@ -17,8 +17,8 @@ export default function Home() {
             playsInline
           />
           <div className="description">
-            <h1>Graphics Projects 2024</h1>
-            <p>Check out this scene I made in pure JavaScript!</p>
+            <h1>Projects</h1>
+            <p>Check out the development projects I&apos;m noodling on.</p>
           </div>
         </div>
       </Link>
@@ -36,7 +36,7 @@ export default function Home() {
           <Image src="/images/illustrations-card.jpg" alt="" width={1222} height={699} />
           <div className="description">
             <h1>Illustration</h1>
-            <p>I like to draw, too.</p>
+            <p>I like to draw, too :)</p>
           </div>
         </div>
       </Link>

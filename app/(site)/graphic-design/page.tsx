@@ -45,32 +45,28 @@ export default function GraphicDesignPage() {
 
       <PortfolioSection
         title="Edvo"
-        date="June 2021"
-        description="Insightful content creation for Edvo's social media channels."
+        description="June 2021 — insightful content creation for Edvo's social media channels."
       >
         <PortfolioGrid items={edvoItems} />
       </PortfolioSection>
 
       <PortfolioSection
         title="Tennessee Speech and Debate"
-        date="March 2021 – February 2020"
-        description="Designed the t-shirts and awards certificates for the Tennessee Speech and Debate Society's Vol Classic Tournament."
+        description="March 2021 – February 2020 — designed the t-shirts and awards certificates for the Tennessee Speech and Debate Society's Vol Classic Tournament."
       >
         <PortfolioGrid items={[...shirtItems, ...awardsItems]} />
       </PortfolioSection>
 
       <PortfolioSection
         title="Youth in Government Election Buttons"
-        date="November 2018"
-        description="Designed pins for a commissioner's election campaign, to their specifications."
+        description="November 2018 — designed pins for a commissioner's election campaign, to their specifications."
       >
         <PortfolioGrid items={buttonsItems} />
       </PortfolioSection>
 
       <PortfolioSection
         title="The Nashville Public Library"
-        date="July 2018"
-        description="Encouraged patrons to participate in The Great American Read through the use of posters."
+        description="July 2018 — encouraged patrons to participate in The Great American Read through the use of posters."
       >
         <PortfolioGrid items={nplItems} />
       </PortfolioSection>
