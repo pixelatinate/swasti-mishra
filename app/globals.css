@@ -58,6 +58,7 @@ a {
   font-family: var(--font-sour-gummy), sans-serif;
   font-weight: 600;
   font-size: 2.4em;
+  margin: 0;
   background: linear-gradient(to right, #c4190d, #f48c0a, #a1a040, #499ab4, #b68082);
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
@@ -69,6 +70,7 @@ a {
   font-weight: 400;
   font-size: 1em;
   font-style: italic;
+  margin-top: 0.3em;
   padding-bottom: 10%;
   color: rgb(110, 110, 110);
 }
@@ -135,6 +137,14 @@ a {
 .sidebar .social-links a:hover {
   background-color: rgb(65, 65, 65);
   color: #a1a040;
+}
+
+.sidebar .social-links a.link-linkedin:hover {
+  color: #0a66c2;
+}
+
+.sidebar .social-links a.link-instagram:hover {
+  color: #833ab4;
 }
 
 /* ----- Main ----- */

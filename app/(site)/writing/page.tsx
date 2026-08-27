@@ -20,7 +20,7 @@ export default async function WritingPage() {
       <h1>Writing</h1>
       <p>
         A collection of pages I&apos;ve written or contributed to, plus older writing samples I&apos;m slowly
-        cataloging — with a live link, an archived (Wayback Machine) copy in case the original ever disappears, and
+        cataloging. Included is a live link, an online archived copy in case the original ever disappears, and
         sometimes a downloadable PDF backup.
       </p>
 

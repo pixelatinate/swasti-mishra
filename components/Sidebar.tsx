@@ -30,13 +30,23 @@ export default function Sidebar() {
         ))}
       </ul>
       <div className="social-links">
-        <a href="https://www.linkedin.com/in/swasti-mishra/" target="_blank" rel="noopener noreferrer">
+        <a
+          className="link-linkedin"
+          href="https://www.linkedin.com/in/swasti-mishra/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaLinkedin />
         </a>
-        <a href="https://github.com/pixelatinate" target="_blank" rel="noopener noreferrer">
+        <a className="link-github" href="https://github.com/pixelatinate" target="_blank" rel="noopener noreferrer">
           <FaGithub />
         </a>
-        <a href="https://www.instagram.com/pixelatinate/?hl=en" target="_blank" rel="noopener noreferrer">
+        <a
+          className="link-instagram"
+          href="https://www.instagram.com/pixelatinate/?hl=en"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
           <FaInstagram />
         </a>
       </div>

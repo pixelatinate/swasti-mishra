@@ -4,7 +4,7 @@ import { Resend } from "resend";
 const EMAIL_REGEX = /^[A-Za-z0-9._%-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
 const NAME_REGEX = /^[A-Za-z .'-]+$/;
 
-const CONTACT_EMAIL = "swasti.mishra@outlook.com";
+const CONTACT_EMAIL = "swastiy2k1@gmail.com";
 
 export async function POST(request: Request) {
   const { name, email, message } = await request.json();
