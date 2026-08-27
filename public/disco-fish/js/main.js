@@ -26,6 +26,27 @@ var diffuseColor = [0.5508, 0.2118, 0.066];
 var specularColor = [0.580594, 0.223257, 0.0695701];
 var minAndMax = [0,0] ;
 
+function showWebGLFallback(canvas) {
+  var message = document.createElement('div');
+  message.style.cssText =
+    'width:' + canvas.offsetWidth + 'px;' +
+    'height:' + canvas.offsetHeight + 'px;' +
+    'display:flex;align-items:center;justify-content:center;text-align:center;' +
+    'background:#f4f4f4;border-radius:5px;box-sizing:border-box;padding:2em;' +
+    'font-family:Roboto,Arial,Helvetica,sans-serif;color:#6a6a6a;';
+  message.innerHTML =
+    '<div>' +
+    '<p style="margin:0 0 0.5em;font-size:1.1em;">This scene needs WebGL, and your browser has it turned off.</p>' +
+    '<p style="margin:0;font-size:0.9em;color:#999;">If you\'re on Chrome, check chrome://settings for "Use graphics acceleration when available," or try a different browser.</p>' +
+    '</div>';
+  canvas.replaceWith(message);
+
+  var controls = document.querySelector('.control_area');
+  if (controls) {
+    controls.style.display = 'none';
+  }
+}
+
 function main() {
   const canvas = document.getElementById('glCanvas');
   // Initialize the GL context
@@ -33,7 +54,7 @@ function main() {
 
   // Only continue if WebGL is available and working
   if (gl === null) {
-    alert('Unable to initialize WebGL2. Contact the TA.');
+    showWebGLFallback(canvas);
     return;
   }
 
