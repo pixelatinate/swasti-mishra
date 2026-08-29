@@ -15,6 +15,7 @@ function getClient(): SanityClient {
 
 export type WritingLink = {
   _id: string;
+  section: "Page" | "Release Note";
   title: string;
   url: string;
   category: "Wrote" | "Contributed";
@@ -22,11 +23,13 @@ export type WritingLink = {
   archiveUrl?: string;
   driveUrl?: string;
   order?: number;
+  changeType?: string;
+  summary?: string;
 };
 
 export async function getWritingLinks(): Promise<WritingLink[]> {
   if (!projectId) return [];
   return getClient().fetch(
-    `*[_type == "writingLink"] | order(category asc, order asc){ _id, title, url, category, release, archiveUrl, driveUrl, order }`
+    `*[_type == "writingLink"] | order(category asc, order asc){ _id, section, title, url, category, release, archiveUrl, driveUrl, order, changeType, summary }`
   );
 }

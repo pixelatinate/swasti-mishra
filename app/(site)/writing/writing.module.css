@@ -16,10 +16,24 @@
   display: block;
 }
 
+.sectionTitle {
+  width: 90%;
+  margin: 0 0 0.6em 5%;
+  font-family: var(--font-sour-gummy), sans-serif;
+  font-weight: 600;
+  font-size: 1.3em;
+  color: var(--heading-accent);
+}
+
 .tableWrapper {
   width: 90%;
   margin-left: 5%;
+  margin-bottom: 2.5em;
   overflow-x: auto;
+}
+
+.tableWrapper:last-child {
+  margin-bottom: 0;
 }
 
 .table {
@@ -57,4 +71,52 @@
 
 .empty {
   color: var(--text-tertiary);
+}
+
+.noteDisclaimer {
+  width: 90%;
+  margin: 0 0 1.5em 5%;
+  font-style: italic;
+  font-size: 0.85em;
+  color: var(--text-tertiary);
+}
+
+.releaseGroup {
+  margin: 0 0 2em;
+}
+
+.releaseGroup:last-child {
+  margin-bottom: 0;
+}
+
+.releaseHeading {
+  width: 90%;
+  margin: 0 0 0.8em 5%;
+  font-family: var(--font-sour-gummy), sans-serif;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.noteBadge {
+  display: inline-block;
+  margin-left: 0.6em;
+  font-size: 0.75em;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--orange);
+  border: 1px solid var(--orange);
+  border-radius: 3px;
+  padding: 0.15em 0.5em;
+  white-space: nowrap;
+}
+
+/* The row of descriptive text under a release note's title/category/live
+   row — this is the class to edit if you want to add your own text here
+   instead of (or alongside) the auto-generated summary. */
+.table td.noteSummary {
+  padding-top: 0;
+  font-style: italic;
+  font-size: 0.9em;
+  color: var(--text-secondary);
 }
