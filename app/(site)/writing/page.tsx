@@ -17,7 +17,7 @@ export default async function WritingPage() {
 
   return (
     <>
-      <h1>Writing</h1>
+      <h1 data-text="Writing">Writing</h1>
       <p>
         A collection of pages I&apos;ve written or contributed to, plus older writing samples I&apos;m slowly
         cataloging. Included is a live link, an online archived copy in case the original ever disappears, and

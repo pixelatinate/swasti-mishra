@@ -41,7 +41,7 @@ const nplItems: PortfolioTile[] = [
 export default function GraphicDesignPage() {
   return (
     <>
-      <h1>Graphic Design</h1>
+      <h1 data-text="Graphic Design">Graphic Design</h1>
 
       <PortfolioSection
         title="Edvo"

@@ -3,8 +3,8 @@
 import { useLayoutEffect, useRef, useState } from "react";
 
 const DISCO_FISH_SRC = "/disco-fish/index.html";
-const NATURAL_WIDTH = 1023;
-const NATURAL_HEIGHT = 750;
+const NATURAL_WIDTH = 1031;
+const NATURAL_HEIGHT = 705;
 
 export default function DiscoFishFrame() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -59,6 +59,9 @@ export default function DiscoFishFrame() {
         position: "relative",
         borderRadius: 5,
         boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)",
+        // The embedded page is always white regardless of site theme; match
+        // it here too so there's no dark flash before the iframe paints.
+        backgroundColor: "#ffffff",
       }}
     >
       <iframe

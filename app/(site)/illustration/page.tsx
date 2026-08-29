@@ -7,7 +7,7 @@ export const metadata: Metadata = {
 export default function IllustrationPage() {
   return (
     <>
-      <h1>Illustration & Design</h1>
+      <h1 data-text="Illustration & Design">Illustration & Design</h1>
       <p>I still have to fill in this page.</p>
     </>
   );

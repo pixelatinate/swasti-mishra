@@ -7,14 +7,39 @@
   <link rel="shortcut icon" type="image/jpg" href="/shared/resources/favicon.ico"/>
   <meta name="description" content="Browser for CS452 Code">
   <meta name="author" content="Swasti Mishra">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body,
+    button,
+    input,
+    label {
+      font-family: 'Outfit', sans-serif;
+    }
+
+    /* This page is embedded via an iframe on a site that now has a dark
+       theme, but it should always look the same regardless — pin it to
+       a plain white background rather than inheriting anything. */
+    html, body {
+      background-color: #ffffff;
+      color: #000000;
+    }
+
+    /* body's default 8px margin gives the canvas room on the left/top, but
+       canvas has no margin of its own, so the page's content ends exactly
+       at the canvas's right edge — no matching breathing room on the right
+       the way there is on the left. Add it explicitly. */
+    #glCanvas {
+      margin-right: 8px;
+    }
+  </style>
 </head>
 
 <body>
-  <h2> Introducing: Disco Fish </h2>
-  <br>
   <canvas id="glCanvas" width="1015px" height="500px"></canvas>
   <br>
-  <div class="control_area" style="width: 640px; padding-bottom:50px" >
+  <div class="control_area" style="width: 640px; padding-bottom:15px; display:flow-root" >
     <div class="cam_pos_sliders" style="float: left; width: 50%;">
       
       <button id="innerBtn" onclick="innerClick()"> Inner Egg View </button> 
@@ -87,22 +112,3 @@
   </script>
 </body>
 </html>
-
-<style>
-  h2 {
-    font-family: 'Brutal Type', sans-serif;
-    font-weight: bold;
-    font-style: italic;
-    font-size: 1.2em;
-
-    display: inline-block;
-    background: linear-gradient(to right, #c4190d, #f48c0a, #a1a040, #499ab4, #b68082);
-    background-position: center;
-    
-    color: transparent;
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-</style>

@@ -19,9 +19,11 @@
   font-family: inherit;
   font-size: 1em;
   padding: 0.6em 0.7em;
-  border: 1px solid rgb(200, 200, 200);
+  border: 1px solid var(--input-border);
   border-radius: 5px;
   resize: vertical;
+  background-color: var(--input-bg);
+  color: var(--text-primary);
 }
 
 .field input:focus,

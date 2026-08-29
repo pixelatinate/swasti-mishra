@@ -31,18 +31,18 @@
 .table th {
   text-align: left;
   font-weight: 700;
-  color: rgb(120, 120, 120);
+  color: var(--text-tertiary);
   font-size: 0.85em;
   text-transform: uppercase;
   letter-spacing: 0.03em;
   padding: 0.6em 1em;
-  border-bottom: 2px solid rgb(232, 232, 232);
+  border-bottom: 2px solid var(--border-subtle);
   white-space: nowrap;
 }
 
 .table td {
   padding: 0.8em 1em;
-  border-bottom: 1px solid rgb(240, 240, 240);
+  border-bottom: 1px solid var(--border-subtle-2);
   vertical-align: middle;
 }
 
@@ -51,10 +51,10 @@
 }
 
 .release {
-  color: rgb(150, 150, 150);
+  color: var(--text-tertiary);
   font-size: 0.9em;
 }
 
 .empty {
-  color: rgb(150, 150, 150);
+  color: var(--text-tertiary);
 }

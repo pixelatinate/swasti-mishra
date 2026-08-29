@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { Roboto, Sour_Gummy } from "next/font/google";
+import { Outfit, Sour_Gummy } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const roboto = Roboto({
-  weight: ["400", "500", "700"],
-  style: ["normal", "italic"],
+const outfit = Outfit({
+  weight: ["400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
 });
@@ -44,7 +43,17 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${roboto.className} ${sourGummy.variable}`}>
+    <html lang="en" className={`${outfit.className} ${sourGummy.variable}`} suppressHydrationWarning>
+      <head>
+        {/* Set the theme attribute before first paint so there's no flash of
+            the wrong theme. Defaults new visitors to dark; a saved choice
+            in localStorage (from the toggle) wins after that. */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');document.documentElement.setAttribute('data-theme',t==='light'?'light':'dark');}catch(e){document.documentElement.setAttribute('data-theme','dark');}})();`,
+          }}
+        />
+      </head>
       <body>
         <Script async src="https://www.googletagmanager.com/gtag/js?id=G-0046WG76SX" />
         <Script id="ga-init">

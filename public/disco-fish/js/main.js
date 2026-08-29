@@ -33,7 +33,7 @@ function showWebGLFallback(canvas) {
     'height:' + canvas.offsetHeight + 'px;' +
     'display:flex;align-items:center;justify-content:center;text-align:center;' +
     'background:#f4f4f4;border-radius:5px;box-sizing:border-box;padding:2em;' +
-    'font-family:Roboto,Arial,Helvetica,sans-serif;color:#6a6a6a;';
+    'font-family:Outfit,Arial,Helvetica,sans-serif;color:#6a6a6a;';
   message.innerHTML =
     '<div>' +
     '<p style="margin:0 0 0.5em;font-size:1.1em;">This scene needs WebGL, and your browser has it turned off.</p>' +

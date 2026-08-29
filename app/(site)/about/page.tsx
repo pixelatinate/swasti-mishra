@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <h1>About & Contact</h1>
+      <h1 data-text="About & Contact">About & Contact</h1>
       <div className="about">
         <Image
           src="/images/swasti.jpg"

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import PortfolioSection from "@/components/PortfolioSection";
 import SlideDeck, { type Slide } from "@/components/SlideDeck";
 import DiscoFishFrame from "@/components/DiscoFishFrame";
@@ -32,7 +33,7 @@ const slides: Slide[] = slideNotes.map((notes, i) => ({
 export default function ProjectsPage() {
   return (
     <>
-      <h1>Projects</h1>
+      <h1 data-text="Projects">Projects</h1>
       <p>
         This is an archive of some random development projects I&apos;ve worked on over the past few years!
       </p>
@@ -41,6 +42,13 @@ export default function ProjectsPage() {
         title="Disco Fish: Spring 2024"
         description="A WebGL scene I built for a Graphics class in college. Drag the sliders to move the camera around, or switch between the inner and outer egg views."
       >
+        <p style={{ marginTop: 0 }}>
+          The fish uses a per-pixel Phong lighting model, meaning that ambient, diffuse, and specular lighting are all
+          computed per-fragment. A tangent-space normal map is layered on top for the scales&apos; bumpy detail.
+          The egg and the bubbles are both real-time reflection/refraction shaders, and a Fresnel term blends between the two based on viewing angle, sampling a
+          skybox cube map as the environment. That same cube map, rendered onto an inside-out cube, is the
+          background skybox itself.
+        </p>
         <DiscoFishFrame />
       </PortfolioSection>
 
@@ -77,6 +85,17 @@ export default function ProjectsPage() {
           consortium&apos;s needs and budget, then wrote documentation so the team could maintain the site
           independently going forward.
         </p>
+        <a
+          href="https://ccc19.org/index.html"
+          style={{ display: "block", position: "relative", width: "100%", aspectRatio: "3 / 1", overflow: "hidden", borderRadius: 5, boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)", margin: 0, padding: 0 }}
+        >
+          <Image
+            src="/images/projects/covid-coronavirus.jpg"
+            alt="Magnified illustration of the coronavirus"
+            fill
+            style={{ objectFit: "cover", margin: 0 }}
+          />
+        </a>
       </PortfolioSection>
 
       <PortfolioSection

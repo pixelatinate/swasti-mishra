@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { usePathname } from "next/navigation";
 import { FaLinkedin, FaGithub, FaInstagram } from "react-icons/fa";
+import ThemeToggle from "./ThemeToggle";
 
 const NAV_LINKS = [
   { href: "/projects", label: "Projects" },
@@ -18,9 +19,9 @@ export default function Sidebar() {
   return (
     <div className="sidebar">
       <Link href="/" title="You are here!">
-        <Image src="/images/favicon.png" alt="" width={111} height={133} />
+        <Image src="/images/avatar.png" alt="" width={111} height={133} priority />
       </Link>
-      <h1>Swasti Mishra</h1>
+      <h1 data-text="Swasti Mishra">Swasti Mishra</h1>
       <h2>Currently in Seattle, WA.<br/>Open to anywhere.</h2>
       <ul className="sidebar-links">
         {NAV_LINKS.map(({ href, label }) => (
@@ -49,6 +50,7 @@ export default function Sidebar() {
         >
           <FaInstagram />
         </a>
+        <ThemeToggle />
       </div>
     </div>
   );
