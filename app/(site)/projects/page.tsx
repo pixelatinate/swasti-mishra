@@ -87,6 +87,7 @@ export default function ProjectsPage() {
         </p>
         <a
           href="https://ccc19.org/index.html"
+          className="slides"
           style={{ display: "block", position: "relative", width: "100%", aspectRatio: "3 / 1", overflow: "hidden", borderRadius: 5, boxShadow: "0 3px 10px rgb(0 0 0 / 0.2)", margin: 0, padding: 0 }}
         >
           <Image
