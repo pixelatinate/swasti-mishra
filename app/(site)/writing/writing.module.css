@@ -111,6 +111,13 @@
   white-space: nowrap;
 }
 
+/* Applied to a release note's title/live row only when a summary row
+   follows it, so the divider line sits between notes (after the summary),
+   not between a title and its own summary. */
+.table tr.noteMainRow td {
+  border-bottom: none;
+}
+
 /* The row of descriptive text under a release note's title/category/live
    row — this is the class to edit if you want to add your own text here
    instead of (or alongside) the auto-generated summary. */

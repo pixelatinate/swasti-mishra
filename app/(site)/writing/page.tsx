@@ -117,7 +117,7 @@ export default async function WritingPage() {
                     <tbody>
                       {notes.map((note) => (
                         <Fragment key={note._id}>
-                          <tr>
+                          <tr className={note.summary ? styles.noteMainRow : undefined}>
                             <td>
                               {note.title}
                               {note.changeType && <span className={styles.noteBadge}>{note.changeType}</span>}
