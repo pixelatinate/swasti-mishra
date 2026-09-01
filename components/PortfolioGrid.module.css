@@ -26,6 +26,10 @@
   background: var(--card-bg);
   box-shadow: 0 3px 10px rgb(0 0 0 / 0.15);
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  /* <button> doesn't inherit the page's font-family by default (same as
+     the disco-fish buttons bug) — without this the caption text below
+     falls back to the browser's default UI font instead of Outfit. */
+  font-family: inherit;
 }
 
 .tile:hover {
@@ -36,6 +40,7 @@
 .tileImage {
   width: 100%;
   height: 100%;
+  margin: 0;
   object-fit: cover;
   display: block;
 }
@@ -47,6 +52,7 @@
 .tileVideo {
   width: 100%;
   height: 100%;
+  margin: 0;
   object-fit: cover;
   display: block;
   background: black;
@@ -115,11 +121,42 @@
   opacity: 1;
 }
 
+.navButton {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.navButton:hover {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.navButtonPrev {
+  left: 3%;
+}
+
+.navButtonNext {
+  right: 3%;
+}
+
 .fullImage {
   max-width: 100%;
   max-height: 90vh;
   width: auto;
   height: auto;
+  margin: 0;
   border-radius: 5px;
   box-shadow: 0 3px 20px rgb(0 0 0 / 0.5);
   transform: scale(0.92);
