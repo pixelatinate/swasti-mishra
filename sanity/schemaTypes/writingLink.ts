@@ -26,6 +26,20 @@ export const writingLink = defineType({
       validation: (rule) => rule.required(),
     }),
     defineField({
+      name: "product",
+      title: "Product",
+      description: "Page only: which product/company this documents, so Pages can be split into their own tables.",
+      type: "string",
+      options: {
+        list: [
+          { title: "Databricks", value: "Databricks" },
+          { title: "MATLAB", value: "MATLAB" },
+        ],
+      },
+      initialValue: "MATLAB",
+      hidden: ({ document }) => document?.section !== "Page",
+    }),
+    defineField({
       name: "url",
       title: "URL",
       description: "The live link to the piece.",

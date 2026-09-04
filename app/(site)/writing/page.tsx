@@ -20,6 +20,28 @@ function releaseValue(release: string): number {
   return Number(match[1]) * 2 + (match[2] === "b" ? 1 : 0);
 }
 
+// Databricks pinned first (it's the newest/growing category); everything
+// else falls in alphabetically after it.
+const PRODUCT_ORDER = ["Databricks"];
+
+function groupByProduct(pages: WritingLink[]): [string, WritingLink[]][] {
+  const groups = new Map<string, WritingLink[]>();
+  for (const page of pages) {
+    const key = page.product ?? "MATLAB";
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key)!.push(page);
+  }
+  for (const group of groups.values()) {
+    group.sort((a, b) => a.category.localeCompare(b.category) || a.title.localeCompare(b.title));
+  }
+  return Array.from(groups.entries()).sort((a, b) => {
+    const ai = PRODUCT_ORDER.indexOf(a[0]);
+    const bi = PRODUCT_ORDER.indexOf(b[0]);
+    if (ai !== -1 || bi !== -1) return (ai === -1 ? Infinity : ai) - (bi === -1 ? Infinity : bi);
+    return a[0].localeCompare(b[0]);
+  });
+}
+
 function groupByRelease(notes: WritingLink[]): [string, WritingLink[]][] {
   const groups = new Map<string, WritingLink[]>();
   for (const note of notes) {
@@ -35,9 +57,7 @@ function groupByRelease(notes: WritingLink[]): [string, WritingLink[]][] {
 
 export default async function WritingPage() {
   const links = await getWritingLinks();
-  const pages = [...links.filter((link) => link.section === "Page")].sort(
-    (a, b) => a.category.localeCompare(b.category) || a.title.localeCompare(b.title)
-  );
+  const pagesByProduct = groupByProduct(links.filter((link) => link.section === "Page"));
   const releaseNotesByRelease = groupByRelease(links.filter((link) => link.section === "Release Note"));
 
   return (
@@ -63,36 +83,41 @@ export default async function WritingPage() {
       ) : (
         <>
           <h2 className={styles.sectionTitle}>Pages</h2>
-          {pages.length === 0 ? (
+          {pagesByProduct.length === 0 ? (
             <p className={styles.empty}>Nothing here yet.</p>
           ) : (
-            <div className={styles.tableWrapper}>
-              <table className={styles.table}>
-                <thead>
-                  <tr>
-                    <th>Title</th>
-                    <th>Category</th>
-                    <th>Live</th>
-                    <th>Archived</th>
-                    <th>PDF</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  {pages.map((link) => (
-                    <tr key={link._id}>
-                      <td>
-                        {link.title}
-                        {link.release && <span className={styles.release}> ({link.release})</span>}
-                      </td>
-                      <td>{link.category}</td>
-                      <td>{link.url ? <a href={link.url}>Live</a> : "—"}</td>
-                      <td>{link.archiveUrl ? <a href={link.archiveUrl}>Wayback</a> : "—"}</td>
-                      <td>{link.driveUrl ? <a href={link.driveUrl}>PDF</a> : "—"}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            pagesByProduct.map(([product, pages]) => (
+              <section key={product} className={styles.releaseGroup}>
+                <h3 className={styles.releaseHeading}>{product}</h3>
+                <div className={styles.tableWrapper}>
+                  <table className={styles.table}>
+                    <thead>
+                      <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Live</th>
+                        <th>Archived</th>
+                        <th>PDF</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {pages.map((link) => (
+                        <tr key={link._id}>
+                          <td>
+                            {link.title}
+                            {link.release && <span className={styles.release}> ({link.release})</span>}
+                          </td>
+                          <td>{link.category}</td>
+                          <td>{link.url ? <a href={link.url}>Live</a> : "—"}</td>
+                          <td>{link.archiveUrl ? <a href={link.archiveUrl}>Wayback</a> : "—"}</td>
+                          <td>{link.driveUrl ? <a href={link.driveUrl}>PDF</a> : "—"}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </section>
+            ))
           )}
 
           <h2 className={styles.sectionTitle}>Release Notes</h2>

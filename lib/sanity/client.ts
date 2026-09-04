@@ -19,6 +19,7 @@ export type WritingLink = {
   title: string;
   url: string;
   category: "Wrote" | "Contributed";
+  product?: "Databricks" | "MATLAB";
   release?: string;
   archiveUrl?: string;
   driveUrl?: string;
@@ -30,6 +31,6 @@ export type WritingLink = {
 export async function getWritingLinks(): Promise<WritingLink[]> {
   if (!projectId) return [];
   return getClient().fetch(
-    `*[_type == "writingLink"] | order(category asc, order asc){ _id, section, title, url, category, release, archiveUrl, driveUrl, order, changeType, summary }`
+    `*[_type == "writingLink"] | order(category asc, order asc){ _id, section, title, url, category, product, release, archiveUrl, driveUrl, order, changeType, summary }`
   );
 }
