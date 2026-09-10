@@ -90,7 +90,14 @@ export default async function WritingPage() {
               <section key={product} className={styles.releaseGroup}>
                 <h3 className={styles.releaseHeading}>{product}</h3>
                 <div className={styles.tableWrapper}>
-                  <table className={styles.table}>
+                  <table className={`${styles.table} ${styles.pagesTable}`}>
+                    <colgroup>
+                      <col />
+                      <col className={styles.colCategory} />
+                      <col className={styles.colLink} />
+                      <col className={styles.colLink} />
+                      <col className={styles.colLink} />
+                    </colgroup>
                     <thead>
                       <tr>
                         <th>Title</th>

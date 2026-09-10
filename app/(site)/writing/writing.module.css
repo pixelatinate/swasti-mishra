@@ -42,6 +42,21 @@
   font-size: 0.95em;
 }
 
+/* Fix the column widths so the per-product Pages tables (Databricks,
+   MATLAB, …) line up with each other instead of each auto-sizing to its
+   own content. The Title column takes whatever's left. */
+.pagesTable {
+  table-layout: fixed;
+}
+
+.colCategory {
+  width: 8em;
+}
+
+.colLink {
+  width: 7em;
+}
+
 .table th {
   text-align: left;
   font-weight: 700;
