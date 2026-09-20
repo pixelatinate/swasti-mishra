@@ -112,6 +112,22 @@
   font-size: 1.1em;
 }
 
+/* A named cluster of related pages (e.g. "Data Formats") within a
+   product's Pages section — same table styling, one step down in the
+   heading hierarchy from the product name. */
+.topicGroup {
+  margin: 1.5em 0 0;
+}
+
+.topicHeading {
+  width: 90%;
+  margin: 0 0 0.6em 5%;
+  font-family: var(--font-sour-gummy), sans-serif;
+  font-weight: 600;
+  font-size: 0.95em;
+  color: var(--text-tertiary);
+}
+
 .noteBadge {
   display: inline-block;
   margin-left: 0.6em;

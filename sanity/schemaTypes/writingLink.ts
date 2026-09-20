@@ -40,6 +40,14 @@ export const writingLink = defineType({
       hidden: ({ document }) => document?.section !== "Page",
     }),
     defineField({
+      name: "topic",
+      title: "Topic",
+      description:
+        "Page only, optional: clusters related pages into their own table within a product's Pages section (e.g. \"Data Formats\"), instead of the flat alphabetical list. Leave blank for pages that don't need grouping.",
+      type: "string",
+      hidden: ({ document }) => document?.section !== "Page",
+    }),
+    defineField({
       name: "url",
       title: "URL",
       description: "The live link to the piece.",

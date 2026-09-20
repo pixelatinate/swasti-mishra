@@ -42,6 +42,66 @@ function groupByProduct(pages: WritingLink[]): [string, WritingLink[]][] {
   });
 }
 
+// Splits one product's pages into the plain alphabetical list plus any
+// named topic clusters (e.g. "Data Formats"), each sorted alphabetically by
+// title, with topics themselves ordered alphabetically.
+function splitByTopic(pages: WritingLink[]): { untopic: WritingLink[]; topics: [string, WritingLink[]][] } {
+  const untopic: WritingLink[] = [];
+  const topicGroups = new Map<string, WritingLink[]>();
+  for (const page of pages) {
+    if (!page.topic) {
+      untopic.push(page);
+      continue;
+    }
+    if (!topicGroups.has(page.topic)) topicGroups.set(page.topic, []);
+    topicGroups.get(page.topic)!.push(page);
+  }
+  for (const group of topicGroups.values()) {
+    group.sort((a, b) => a.category.localeCompare(b.category) || a.title.localeCompare(b.title));
+  }
+  const topics = Array.from(topicGroups.entries()).sort((a, b) => a[0].localeCompare(b[0]));
+  return { untopic, topics };
+}
+
+function PagesTable({ pages }: { pages: WritingLink[] }) {
+  return (
+    <div className={styles.tableWrapper}>
+      <table className={`${styles.table} ${styles.pagesTable}`}>
+        <colgroup>
+          <col />
+          <col className={styles.colCategory} />
+          <col className={styles.colLink} />
+          <col className={styles.colLink} />
+          <col className={styles.colLink} />
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Live</th>
+            <th>Archived</th>
+            <th>PDF</th>
+          </tr>
+        </thead>
+        <tbody>
+          {pages.map((link) => (
+            <tr key={link._id}>
+              <td>
+                {link.title}
+                {link.release && <span className={styles.release}> ({link.release})</span>}
+              </td>
+              <td>{link.category}</td>
+              <td>{link.url ? <a href={link.url}>Live</a> : "—"}</td>
+              <td>{link.archiveUrl ? <a href={link.archiveUrl}>Wayback</a> : "—"}</td>
+              <td>{link.driveUrl ? <a href={link.driveUrl}>PDF</a> : "—"}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
 function groupByRelease(notes: WritingLink[]): [string, WritingLink[]][] {
   const groups = new Map<string, WritingLink[]>();
   for (const note of notes) {
@@ -86,45 +146,21 @@ export default async function WritingPage() {
           {pagesByProduct.length === 0 ? (
             <p className={styles.empty}>Nothing here yet.</p>
           ) : (
-            pagesByProduct.map(([product, pages]) => (
-              <section key={product} className={styles.releaseGroup}>
-                <h3 className={styles.releaseHeading}>{product}</h3>
-                <div className={styles.tableWrapper}>
-                  <table className={`${styles.table} ${styles.pagesTable}`}>
-                    <colgroup>
-                      <col />
-                      <col className={styles.colCategory} />
-                      <col className={styles.colLink} />
-                      <col className={styles.colLink} />
-                      <col className={styles.colLink} />
-                    </colgroup>
-                    <thead>
-                      <tr>
-                        <th>Title</th>
-                        <th>Category</th>
-                        <th>Live</th>
-                        <th>Archived</th>
-                        <th>PDF</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {pages.map((link) => (
-                        <tr key={link._id}>
-                          <td>
-                            {link.title}
-                            {link.release && <span className={styles.release}> ({link.release})</span>}
-                          </td>
-                          <td>{link.category}</td>
-                          <td>{link.url ? <a href={link.url}>Live</a> : "—"}</td>
-                          <td>{link.archiveUrl ? <a href={link.archiveUrl}>Wayback</a> : "—"}</td>
-                          <td>{link.driveUrl ? <a href={link.driveUrl}>PDF</a> : "—"}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </section>
-            ))
+            pagesByProduct.map(([product, pages]) => {
+              const { untopic, topics } = splitByTopic(pages);
+              return (
+                <section key={product} className={styles.releaseGroup}>
+                  <h3 className={styles.releaseHeading}>{product}</h3>
+                  {untopic.length > 0 && <PagesTable pages={untopic} />}
+                  {topics.map(([topic, topicPages]) => (
+                    <div key={topic} className={styles.topicGroup}>
+                      <h4 className={styles.topicHeading}>{topic}</h4>
+                      <PagesTable pages={topicPages} />
+                    </div>
+                  ))}
+                </section>
+              );
+            })
           )}
 
           <h2 className={styles.sectionTitle}>Release Notes</h2>
