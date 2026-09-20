@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import { Outfit, Sour_Gummy } from "next/font/google";
+import { Work_Sans, Sour_Gummy } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
 import "./globals.css";
 
-const outfit = Outfit({
+const workSans = Work_Sans({
   weight: ["400", "500", "600"],
   subsets: ["latin"],
   display: "swap",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${outfit.className} ${sourGummy.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${workSans.className} ${sourGummy.variable}`} suppressHydrationWarning>
       <head>
         {/* Set the theme attribute before first paint so there's no flash of
             the wrong theme. Defaults new visitors to dark; a saved choice

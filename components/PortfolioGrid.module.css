@@ -28,7 +28,7 @@
   transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out, background-color 0.2s ease-in-out;
   /* <button> doesn't inherit the page's font-family by default (same as
      the disco-fish buttons bug) — without this the caption text below
-     falls back to the browser's default UI font instead of Outfit. */
+     falls back to the browser's default UI font instead of Work Sans. */
   font-family: inherit;
 }
 
