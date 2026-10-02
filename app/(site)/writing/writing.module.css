@@ -149,12 +149,60 @@
   border-bottom: none;
 }
 
+/* Fixes the Title/Live column widths so the Live column lines up with the
+   PDF column in the Pages tables above (same 7em right-hand column, same
+   90%-wide wrapper). */
+.notesTable {
+  table-layout: fixed;
+}
+
 /* The row of descriptive text under a release note's title/category/live
    row — this is the class to edit if you want to add your own text here
-   instead of (or alongside) the auto-generated summary. */
+   instead of (or alongside) the auto-generated summary. Capped to the
+   Title column's width (no colSpan on the cell) so long text wraps
+   instead of running on underneath the Live link. */
 .table td.noteSummary {
   padding-top: 0;
   font-style: italic;
   font-size: 0.9em;
   color: var(--text-secondary);
+  overflow-wrap: anywhere;
+}
+
+.noteParagraph {
+  margin: 0 0 0.6em;
+}
+
+.noteParagraph:last-child {
+  margin-bottom: 0;
+}
+
+/* Inline `code` spans pulled from MathWorks' own <code> markup — monospace
+   and a subtle chip so function/variable names read as code, not prose. */
+.inlineCode {
+  font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  font-style: normal;
+  font-size: 0.9em;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 3px;
+  padding: 0.05em 0.35em;
+}
+
+/* Multi-line ```code blocks``` — own scroll container so a long line never
+   widens the table or wraps mid-token. */
+.codeBlock {
+  margin: 0.5em 0;
+  padding: 0.6em 0.8em;
+  background: var(--card-bg);
+  border: 1px solid var(--border-subtle);
+  border-radius: 4px;
+  overflow-x: auto;
+}
+
+.codeBlock code {
+  font-family: "SF Mono", Menlo, Consolas, "Courier New", monospace;
+  font-style: normal;
+  font-size: 0.85em;
+  white-space: pre;
 }

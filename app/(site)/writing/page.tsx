@@ -102,6 +102,43 @@ function PagesTable({ pages }: { pages: WritingLink[] }) {
   );
 }
 
+// Release note summaries are plain text with light Markdown-ish markup:
+// `inline code` and ```fenced code blocks```, carried over verbatim from
+// MathWorks' own <code>/<pre> markup. Parse that into styled nodes instead
+// of dumping it as one plain-text blob.
+function renderInline(text: string, keyPrefix: string) {
+  return text.split(/(`[^`]+`)/g).map((part, i) =>
+    part.startsWith("`") && part.endsWith("`") ? (
+      <code key={`${keyPrefix}-${i}`} className={styles.inlineCode}>
+        {part.slice(1, -1)}
+      </code>
+    ) : (
+      part
+    )
+  );
+}
+
+function renderNoteSummary(text: string) {
+  // Splitting on the ``` fences alternates [prose, code, prose, code, ...].
+  return text.split(/```([\s\S]*?)```/g).map((segment, i) =>
+    i % 2 === 1 ? (
+      <pre key={`code-${i}`} className={styles.codeBlock}>
+        <code>{segment.trim()}</code>
+      </pre>
+    ) : (
+      segment
+        .split(/\n\s*\n/)
+        .map((p) => p.trim())
+        .filter(Boolean)
+        .map((paragraph, pi) => (
+          <p key={`p-${i}-${pi}`} className={styles.noteParagraph}>
+            {renderInline(paragraph, `${i}-${pi}`)}
+          </p>
+        ))
+    )
+  );
+}
+
 function groupByRelease(notes: WritingLink[]): [string, WritingLink[]][] {
   const groups = new Map<string, WritingLink[]>();
   for (const note of notes) {
@@ -165,8 +202,8 @@ export default async function WritingPage() {
 
           <h2 className={styles.sectionTitle}>Release Notes</h2>
           <p className={styles.noteDisclaimer}>
-            Descriptions below are written in my own words, not copied from MathWorks&apos; documentation — that
-            text is theirs, not mine to republish. Follow the link on each note to read the original.
+            Descriptions below are MathWorks&apos; own release-note text, reproduced with their permission. Follow
+            the link on each note to read it in its original context.
           </p>
           {releaseNotesByRelease.length === 0 ? (
             <p className={styles.empty}>Nothing here yet.</p>
@@ -175,7 +212,11 @@ export default async function WritingPage() {
               <section key={release} className={styles.releaseGroup}>
                 <h3 className={styles.releaseHeading}>{release}</h3>
                 <div className={styles.tableWrapper}>
-                  <table className={styles.table}>
+                  <table className={`${styles.table} ${styles.notesTable}`}>
+                    <colgroup>
+                      <col />
+                      <col className={styles.colLink} />
+                    </colgroup>
                     <thead>
                       <tr>
                         <th>Title</th>
@@ -194,9 +235,12 @@ export default async function WritingPage() {
                           </tr>
                           {note.summary && (
                             <tr>
-                              <td colSpan={2} className={styles.noteSummary}>
-                                {note.summary}
-                              </td>
+                              {/* No colSpan: keeping the real two-column grid means this
+                                  cell is capped to the Title column's width (same as the
+                                  Pages tables above), so long text wraps instead of
+                                  running on underneath the Live link. */}
+                              <td className={styles.noteSummary}>{renderNoteSummary(note.summary)}</td>
+                              <td />
                             </tr>
                           )}
                         </Fragment>

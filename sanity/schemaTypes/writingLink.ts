@@ -102,7 +102,7 @@ export const writingLink = defineType({
       name: "summary",
       title: "Summary",
       description:
-        "Release Note only: a short description in your own words — not copied from MathWorks' text, since that's their copyrighted documentation, not something to republish verbatim here.",
+        "Release Note only: MathWorks' own release-note text, reproduced with their permission (granted 2026-10-02).",
       type: "text",
     }),
   ],
