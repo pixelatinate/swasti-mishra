@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import Image from "next/image";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { trackEvent } from "@/lib/analytics";
 import styles from "./PortfolioGrid.module.css";
 
 type ImageLike = { src: string; alt: string; width: number; height: number };
@@ -103,7 +104,10 @@ export default function PortfolioGrid({
                 key={thumb.src}
                 type="button"
                 className={styles.tile}
-                onClick={() => setOpenIndex(tileStartIndex[i])}
+                onClick={() => {
+                  setOpenIndex(tileStartIndex[i]);
+                  trackEvent("image_open", { image: thumb.alt.slice(0, 100), caption: item.caption ?? "" });
+                }}
                 aria-label={`View ${thumb.alt}`}
               >
                 <Image src={thumb.src} alt={thumb.alt} width={thumb.width} height={thumb.height} className={tileImageClassName} />

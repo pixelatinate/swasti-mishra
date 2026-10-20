@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { FaSun, FaMoon } from "react-icons/fa";
+import { trackEvent } from "@/lib/analytics";
 
 export default function ThemeToggle() {
   // Starts null (rendering an empty placeholder) so the very first client
@@ -22,6 +23,7 @@ export default function ThemeToggle() {
     const next = theme === "light" ? "dark" : "light";
     setTheme(next);
     document.documentElement.setAttribute("data-theme", next);
+    trackEvent("theme_toggle", { theme: next });
     try {
       localStorage.setItem("theme", next);
     } catch {

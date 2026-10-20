@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, type FormEvent } from "react";
+import { trackEvent } from "@/lib/analytics";
 import styles from "./ContactForm.module.css";
 
 type Status = "idle" | "submitting" | "success" | "error";
@@ -33,14 +34,17 @@ export default function ContactForm() {
       if (!response.ok) {
         setErrorMessage(result.error ?? "Something went wrong. Please try again.");
         setStatus("error");
+        trackEvent("contact_form_error", { reason: "server_rejected" });
         return;
       }
 
       setStatus("success");
+      trackEvent("contact_form_submit");
       form.reset();
     } catch {
       setErrorMessage("Something went wrong. Please try again.");
       setStatus("error");
+      trackEvent("contact_form_error", { reason: "network" });
     }
   }
 

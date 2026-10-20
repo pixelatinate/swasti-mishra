@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Work_Sans, Sour_Gummy } from "next/font/google";
 import Script from "next/script";
 import { Analytics } from "@vercel/analytics/next";
+import ClickTracker from "@/components/ClickTracker";
 import "./globals.css";
 
 const workSans = Work_Sans({
@@ -64,6 +65,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         </Script>
         {children}
         <Analytics />
+        <ClickTracker />
       </body>
     </html>
   );

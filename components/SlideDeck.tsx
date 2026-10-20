@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { trackEvent } from "@/lib/analytics";
 import styles from "./SlideDeck.module.css";
 
 export type Slide = {
@@ -16,7 +17,9 @@ export default function SlideDeck({ slides }: { slides: Slide[] }) {
   const current = slides[index];
 
   function goTo(next: number) {
-    setIndex(((next % slides.length) + slides.length) % slides.length);
+    const target = ((next % slides.length) + slides.length) % slides.length;
+    setIndex(target);
+    trackEvent("slide_nav", { slide: target + 1, total: slides.length });
   }
 
   return (
