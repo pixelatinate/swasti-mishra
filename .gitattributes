@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Keep the old static site and archived class code out of GitHub's language stats
+legacy-static/** linguist-vendored
+code/** linguist-vendored
