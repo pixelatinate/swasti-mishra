@@ -17,6 +17,8 @@ export type ReportData = {
   yesterday: Overview;
   previousDay: Overview;
   last7Days: Overview;
+  today: Overview; // so far, may lag a few hours
+  activeNow: number | null; // users in the last 30 minutes (null = realtime call failed)
   topPages: { path: string; views: number }[];
   sources: { source: string; sessions: number }[];
   countries: { country: string; users: number }[];
@@ -68,7 +70,7 @@ export async function fetchReportData(): Promise<ReportData> {
       requests: [
         {
           // No dimensions + several ranges: one row per range, in order.
-          dateRanges: [yesterdayRange, { startDate: "2daysAgo", endDate: "2daysAgo" }, { startDate: "7daysAgo", endDate: "yesterday" }],
+          dateRanges: [yesterdayRange, { startDate: "2daysAgo", endDate: "2daysAgo" }, { startDate: "7daysAgo", endDate: "yesterday" }, { startDate: "today", endDate: "today" }],
           metrics: [{ name: "activeUsers" }, { name: "sessions" }, { name: "screenPageViews" }],
         },
         {
@@ -106,7 +108,7 @@ export async function fetchReportData(): Promise<ReportData> {
   const [overviewRows, pageRows, sourceRows, countryRows, eventRows] = batch.data.reports.map(toRows);
 
   const overview = (i: number): Overview => {
-    // Rows come back tagged date_range_0/1/2; match on that rather than position.
+    // Rows come back tagged date_range_0..3; match on that rather than position.
     const row = overviewRows.find((r) => r.dims[0] === `date_range_${i}`);
     return { users: row?.metrics[0] ?? 0, sessions: row?.metrics[1] ?? 0, pageViews: row?.metrics[2] ?? 0 };
   };
@@ -135,6 +137,20 @@ export async function fetchReportData(): Promise<ReportData> {
     linkClicks = null;
   }
 
+  // Realtime = the last 30 minutes. Separate request so a failure here
+  // (e.g. permissions) can't sink the rest of the report.
+  let activeNow: number | null = null;
+  try {
+    const realtime = await client.request<GaReport>({
+      url: `${base}:runRealtimeReport`,
+      method: "POST",
+      data: { metrics: [{ name: "activeUsers" }] },
+    });
+    activeNow = toRows(realtime.data)[0]?.metrics[0] ?? 0;
+  } catch {
+    activeNow = null;
+  }
+
   const dateLabel = new Date(Date.now() - 24 * 60 * 60 * 1000).toLocaleDateString("en-US", {
     weekday: "short",
     month: "short",
@@ -147,6 +163,8 @@ export async function fetchReportData(): Promise<ReportData> {
     yesterday: overview(0),
     previousDay: overview(1),
     last7Days: overview(2),
+    today: overview(3),
+    activeNow,
     topPages: pageRows.map((r) => ({ path: r.dims[0], views: r.metrics[0] })),
     sources: sourceRows.map((r) => ({ source: r.dims[0], sessions: r.metrics[0] })),
     countries: countryRows.map((r) => ({ country: r.dims[0], users: r.metrics[0] })),
@@ -181,6 +199,9 @@ export function renderReport(d: ReportData): { html: string; text: string } {
     `Visitors:   ${y.users} (${delta(y.users, p.users)} vs day before)   7-day total: ${w.users}`,
     `Sessions:   ${y.sessions} (${delta(y.sessions, p.sessions)})   7-day total: ${w.sessions}`,
     `Page views: ${y.pageViews} (${delta(y.pageViews, p.pageViews)})   7-day total: ${w.pageViews}`,
+    "",
+    `Today so far: ${d.today.users} visitors, ${d.today.pageViews} page views (Google can lag a few hours)`,
+    `Active in the last 30 minutes: ${d.activeNow ?? "unavailable"}`,
     "",
     "TOP PAGES",
     ...(d.topPages.length ? d.topPages.map((r) => `  ${r.views}  ${r.path}`) : ["  (none)"]),
@@ -224,6 +245,7 @@ export function renderReport(d: ReportData): { html: string; text: string } {
   const html = `<div style="font-family:-apple-system,Segoe UI,Helvetica,Arial,sans-serif;max-width:600px;margin:0 auto;color:#222">
 <h2 style="margin:0 0 16px">Site report · ${esc(d.dateLabel)}</h2>
 <table style="width:100%;border-spacing:8px 0;margin:0 -8px"><tr>${stat("Visitors", y.users, p.users, w.users)}${stat("Sessions", y.sessions, p.sessions, w.sessions)}${stat("Page views", y.pageViews, p.pageViews, w.pageViews)}</tr></table>
+<p style="margin:14px 0 0;font-size:13px;color:#555">Today so far: <b>${d.today.users}</b> visitors, <b>${d.today.pageViews}</b> page views &nbsp;·&nbsp; Active in the last 30 min: <b>${d.activeNow ?? "n/a"}</b></p>
 ${h("Top pages")}${table(d.topPages.map((r) => [String(r.views), r.path]))}
 ${h("Where visitors came from")}${table(d.sources.map((r) => [String(r.sessions), r.source]))}
 ${h("Countries")}${table(d.countries.map((r) => [String(r.users), r.country]))}
