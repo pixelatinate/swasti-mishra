@@ -39,7 +39,7 @@ export default function ProjectsPage() {
       </p>
 
       <PortfolioSection
-        title="Disco Fish: Spring 2024"
+        title="Disco Fish: Spring 2023"
         description="A WebGL scene I built for a Graphics class in college. Drag the sliders to move the camera around, or switch between the inner and outer egg views."
       >
         <p style={{ marginTop: 0 }}>

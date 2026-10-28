@@ -28,8 +28,8 @@
   --input-border: rgba(255, 255, 255, 0.3);
   --input-bg: #2c2c2c;
   --heading-accent: #7ec8e3;
-  --link: #7cb7ff;
-  --link-hover: #b8d9ff;
+  --link: #bac27b;
+  --link-hover: #dede8a;
 }
 
 :root[data-theme="light"] {
@@ -48,8 +48,8 @@
   --input-border: rgb(200, 200, 200);
   --input-bg: transparent;
   --heading-accent: #2f7fa3;
-  --link: #1a5fb4;
-  --link-hover: #0b3d82;
+  --link: #6b7620;
+  --link-hover: #48520f;
 }
 
 * {
@@ -313,23 +313,16 @@ a {
   text-decoration: none;
 }
 
-/* Plain text links (no class): standard underlined links. Anchors that carry
-   a class (image tiles, captions) or wrap a home-page slide card style
+/* Plain text links (no class): the avatar's greens, no underline. Anchors that
+   carry a class (image tiles, captions) or wrap a home-page slide card style
    themselves. */
 .main a:not([class]):not(:has(> .slides)) {
   color: var(--link);
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.18em;
-  /* Underline starts subtle and firms up on hover. */
-  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
-  transition: color 0.15s ease-in-out, text-decoration-color 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out;
 }
 
 .main a:not([class]):not(:has(> .slides)):hover {
   color: var(--link-hover);
-  text-decoration-color: currentColor;
-  text-decoration-thickness: 2px;
 }
 
 .main a:not([class]):not(:has(> .slides)):focus-visible {
