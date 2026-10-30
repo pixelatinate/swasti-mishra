@@ -56,13 +56,20 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         />
       </head>
       <body>
-        <Script async src="https://www.googletagmanager.com/gtag/js?id=G-0046WG76SX" />
-        <Script id="ga-init">
-          {`window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-0046WG76SX');`}
-        </Script>
+        {/* Only the live site reports to Google Analytics, so local dev and
+            Vercel preview deploys don't count as visitors. trackEvent()
+            no-ops when window.gtag is missing. */}
+        {process.env.VERCEL_ENV === "production" && (
+          <>
+            <Script async src="https://www.googletagmanager.com/gtag/js?id=G-0046WG76SX" />
+            <Script id="ga-init">
+              {`window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-0046WG76SX');`}
+            </Script>
+          </>
+        )}
         {children}
         <Analytics />
         <ClickTracker />

@@ -247,13 +247,16 @@ a {
   height: auto;
   margin: 0;
   box-shadow: none;
-  transition: transform 0.5s ease-in-out, filter 0.5s ease-in-out;
+  /* transform and opacity are the only properties animated here: browsers can
+     run them on the GPU without repainting, which matters on older machines
+     (animating filter on a playing video repaints every frame). */
+  transition: transform 0.3s ease-out;
+  will-change: transform;
 }
 
 .main .slides:hover img,
 .main .slides:hover video {
   transform: scale(1.06);
-  filter: brightness(0.7);
 }
 
 .main .slides::after {
@@ -261,9 +264,11 @@ a {
   position: absolute;
   inset: 0;
   z-index: 1;
-  background: linear-gradient(to top, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0) 45%);
+  /* Flat dim (replaces the old brightness filter) plus a bottom gradient to
+     keep the title readable. */
+  background: linear-gradient(to top, rgb(0 0 0 / 0.55), rgb(0 0 0 / 0) 45%), rgb(0 0 0 / 0.3);
   opacity: 0;
-  transition: opacity 0.4s ease-in-out;
+  transition: opacity 0.3s ease-out;
 }
 
 .main .slides:hover::after {
@@ -277,7 +282,7 @@ a {
   right: 5%;
   z-index: 2;
   color: white;
-  transition: transform 0.4s ease-in-out;
+  transition: transform 0.3s ease-out;
 }
 
 .main .slides:hover .description {
@@ -295,7 +300,7 @@ a {
   background-clip: text;
   -webkit-text-fill-color: white;
   color: white;
-  transition: -webkit-text-fill-color 0.4s ease-in-out;
+  transition: -webkit-text-fill-color 0.3s ease-out;
 }
 
 .main .slides:hover .description h1 {
@@ -305,6 +310,22 @@ a {
 .main .slides .description p {
   margin: 0;
   font-size: 1.2em;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .main .slides img,
+  .main .slides video,
+  .main .slides::after,
+  .main .slides .description,
+  .main .slides .description h1 {
+    transition: none;
+  }
+
+  .main .slides:hover img,
+  .main .slides:hover video,
+  .main .slides:hover .description {
+    transform: none;
+  }
 }
 
 /* Baseline: cards, tiles and captions are links but shouldn't look like text
